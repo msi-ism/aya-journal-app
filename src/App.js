@@ -8,6 +8,7 @@ import NewOrderPage from './pages/NewOrderPage';
 import OrderHistory from './pages/OrderHistory';
 import HomePage from './pages/HomePage';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 
 
@@ -22,12 +23,14 @@ function App() {
             <Route path='/orders/new' element={<NewOrderPage/>} />
             <Route path='/orders' element={<OrderHistory/>} />
           </Routes>
+          <Footer />
         </>
       ) : (
         <>
         <NavBar setUser={setUser}/>  
         <HomePage />
         {/* <AuthPage setUser={setUser} /> */}
+        <Footer />
       </>
       )}
     </main>

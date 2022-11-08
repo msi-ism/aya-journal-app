@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Public+Sans:wght@300;500&family=Rubik:wght@400;600&display=swap');
 
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -52,7 +43,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, #CC3F60, #824C88);
   padding: 0vmin;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 code {
@@ -75,10 +67,6 @@ h1 {
   font-weight: 600;
   font-size: 11vh;
   color: white;
-}
-
-.header {
-  margin-top: 15%;
 }
 
 .align-ctr {
@@ -226,4 +214,33 @@ button[type="submit"] {
 .logo {
   width: auto;
   height: 50px;
+}
+
+
+body > .main-container {
+  width: 100%;
+  height: 100%;
+}
+
+.main-container > .home-cardcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  height: 100%;
+  width: 95vw;
+  margin-bottom: 30px;
+}
+.home-cardcontainer > .post-card {
+  width: 30vw;
+  height: 300px;
+  background-color: var(--green-1);
+}
+
+.footer-container {
+  height: 200px;
+  width: 100%;
+  background-color: black;
+  color: white;
 }
