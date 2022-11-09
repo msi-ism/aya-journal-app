@@ -1,4 +1,5 @@
 import PostCard from "../components/PostCard";
+import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 
 const verbs = ['be', 'see', 'know', 'grow', 'discover', 'love', 'heal']
@@ -33,6 +34,7 @@ const HomePage = () => {
                 <PostCard />
                 <PostCard />
             </div>
+            <Footer />
         </div>
     );
 }

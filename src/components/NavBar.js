@@ -15,7 +15,7 @@ const NavBar = ({user, setUser}) => {
         </div>
         <div className='navmenu'>
             {!user ? <Link to='/auth'>SignUp</Link>  : null}
-            <Link to='/orders/new'>{" "}{" "}New Order</Link>
+            {/* <Link to='/orders/new'>{" "}{" "}New Order</Link> */}
             {user ? <><span className='navname'>  Welcome, {user.name} <Link className='navname' to='' onClick={handleLogOut}>Log Out</Link></span></> : ''}
         </div>
     </nav>

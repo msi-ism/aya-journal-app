@@ -7,6 +7,7 @@ import AuthPage from './pages/AuthPage';
 import NewOrderPage from './pages/NewOrderPage';
 import OrderHistory from './pages/OrderHistory';
 import HomePage from './pages/HomePage';
+import FeedPage from './pages/FeedPage';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 
@@ -18,13 +19,12 @@ function App() {
     <main className="App">
       { user? (
       <>
-          <NavBar user={user} />
-          <HomePage />
+          {/* <NavBar user={user} /> */}
+          <FeedPage />
           <Routes>
             <Route path='/orders/new' element={<NewOrderPage/>} />
             <Route path='/orders' element={<OrderHistory/>} />
           </Routes>
-          <Footer />
         </>
       ) : (
         <>
@@ -35,7 +35,6 @@ function App() {
         </Routes>
 
         {/* <AuthPage setUser={setUser} /> */}
-        <Footer />
       </>
       )}
     </main>
