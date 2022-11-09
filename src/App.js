@@ -19,8 +19,8 @@ function App() {
       { user? (
       <>
           <NavBar user={user} />
-          <Routes> 
-            <Route path='/auth' element={<AuthPage/>} />
+          <HomePage />
+          <Routes>
             <Route path='/orders/new' element={<NewOrderPage/>} />
             <Route path='/orders' element={<OrderHistory/>} />
           </Routes>
@@ -30,9 +30,9 @@ function App() {
         <>
         <NavBar setUser={setUser}/> 
         <Routes> 
-            <Route path='/' element={<HomePage />} />
-            <Route path='/auth' element={<AuthPage/>} />
-          </Routes>
+            <Route path='/' element={<HomePage setUser={setUser}/>} />
+            <Route path='/auth' element={<AuthPage setUser={setUser}/>} />
+        </Routes>
 
         {/* <AuthPage setUser={setUser} /> */}
         <Footer />
