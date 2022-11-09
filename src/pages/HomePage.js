@@ -14,8 +14,7 @@ const HomePage = () => {
                 setVerb((verb) => randomVerb)
         }
             
-
-        }, 1250)
+        }, 1500)
         // ^ Above all, when using setInterval, it is imperative that you clear the scheduled interval once the component unmounts.
         return () => clearInterval(interval)
 

@@ -196,7 +196,7 @@ button[type="submit"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 8vmin;
+  height: 9vmin;
   background-color: rgba(0, 0, 0, .1);
   width: 100vw;
   padding: 25px;
@@ -233,23 +233,42 @@ body > .main-container {
   height: 100%;
   width: 95vw;
   margin-bottom: 30px;
+
+
+  
 }
 .home-cardcontainer > .post-card {
   width: 30vw;
-  height: 300px;
-  background-color: var(--green-1);
+  height: auto;
+  background-color: var(--tan-4);
   box-shadow: 10px 8px 3px -4px var(--purple-2);
+  border-radius: 20px;
 }
 
 .post-card > .lower-card {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   justify-content: right;
   gap: 5px;
-  padding: 0 5px;
-  width: 100%;
+  padding: 0 15px;
+  width: 30vw;
   height: auto;
   background-color: #9F73AB;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.lower-card > .card-user {
+  display: inline-flex;
+  flex: 1;
+  color: blue;
+}
+
+.lower-card > .card-actions {
+  display: inline-flex;
+  align-self: right;
+  gap: 5px;
+
 }
 
 .footer-container {
@@ -260,5 +279,5 @@ body > .main-container {
 }
 
 .magic-word {
-  color: var(--darkgreen)
+  color: var(--orange)
 }
