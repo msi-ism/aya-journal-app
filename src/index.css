@@ -321,19 +321,38 @@ body > .main-container {
   color: white;
   background-color: black;
 }
+.user-nav > .user-links {
+  height: 100%;
+}
 
-.user-nav > .user-nav-item {
-  border: 1px solid white;
+.user-links > .user-link {
+  border-bottom: 1px solid white;
   padding-top: 5px;
   padding-bottom: 5px;
-  height: 50px;
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
+
+.user-nav > .acct-block {
+  height: auto;
+}
+
 
 .user-nav > .user-block {
   height: 265px;
+  padding: 10px;
+  border-bottom: 1px solid white;
 }
+
+.user-block > .profile-pic {
+  max-height: 190px;
+}
+
 .acct-block > .user-nav-item {
-  border: 1px solid white;
+  border-bottom: 1px solid white;
   padding-top: 5px;
   padding-bottom: 5px;
   height: 50px;
