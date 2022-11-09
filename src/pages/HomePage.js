@@ -1,11 +1,12 @@
 import PostCard from "../components/PostCard";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
+import NavBar from "../components/NavBar";
 
 const verbs = ['be', 'see', 'know', 'grow', 'discover', 'love', 'heal']
 
 
-const HomePage = () => {
+const HomePage = ({user}) => {
     const [verb, setVerb] = useState('be')
 
     useEffect(() => {
@@ -23,6 +24,7 @@ const HomePage = () => {
 
     return (
         <div className="main-container">
+            <NavBar />
             <div className="header">
                 <h1>Welcome to the As You Are Community!</h1>
                 <h2>A place where you can<span className='magic-word'> {verb}</span> yourself as you are.</h2>

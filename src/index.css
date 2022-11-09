@@ -208,6 +208,15 @@ button[type="submit"] {
   color: white;
 }
 
+.navbar > .navmenu {
+  display: flex;
+  gap: 15px;
+}
+
+.navmenu > .navname {
+  color: white;
+}
+
 .navbar > Link {
   color: white;
 }
@@ -218,11 +227,14 @@ button[type="submit"] {
 }
 
 
-body > .main-container {
-  width: auto;
+.main-container {
+  width: 100vw;
   height: 100%;
   display: flex;
-  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .main-container > .home-cardcontainer {
@@ -252,7 +264,7 @@ body > .main-container {
   justify-content: right;
   gap: 5px;
   padding: 0 15px;
-  width: 30vw;
+  width: 100%;
   height: auto;
   background-color: #9F73AB;
   border-bottom-left-radius: 20px;
@@ -267,9 +279,14 @@ body > .main-container {
 
 .lower-card > .card-actions {
   display: inline-flex;
+  align-items: center;
   align-self: right;
-  gap: 5px;
+  gap: 10px;
+}
 
+.card-actions > .card-ico {
+  max-height: 25px;
+  width: auto;
 }
 
 .footer-container {
@@ -303,6 +320,9 @@ body > .main-container {
 }
 
 .feed-container > .scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   width: 80vw;
   margin-left: 20vw;
   margin-top: 15vh;
@@ -310,6 +330,17 @@ body > .main-container {
   align-items: center;
   background-color: transparent;
 }
+
+.scroll-container > .post-card {
+  width: 60vw;
+  height: auto;
+  background-color: var(--tan-4);
+  box-shadow: 10px 8px 10px 2px rgba(75, 0, 130, .2);
+  border-radius: 20px;
+
+}
+
+
 
 .feed-container > .user-nav {
   display: flex;
@@ -343,12 +374,12 @@ body > .main-container {
 
 .user-nav > .user-block {
   height: 265px;
-  padding: 10px;
+  padding: 20px;
   border-bottom: 1px solid white;
 }
 
 .user-block > .profile-pic {
-  max-height: 190px;
+  max-height: 150px;
 }
 
 .acct-block > .user-nav-item {

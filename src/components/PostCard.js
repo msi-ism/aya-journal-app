@@ -1,4 +1,6 @@
-
+import likeIco from './like.png'
+import commentIco from './comment.png'
+import shareIco from './send.png'
 
 const PostCard = () => {
     return (
@@ -15,9 +17,9 @@ const PostCard = () => {
                     <p>Username</p>
                 </div>
                 <div className="card-actions">
-                    <p>Claps</p>
-                    <p>Comments</p>
-                    <p>Share</p>
+                    <img className='card-ico' src={likeIco} />
+                    <img className='card-ico' src={commentIco} />
+                    <img className='card-ico' src={shareIco} />
                 </div>
             </div>
         </div>

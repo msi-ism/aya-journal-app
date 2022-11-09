@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react'
 import {Route, Routes} from 'react-router-dom'
-import { getUser} from './utilities/users-service'
+import {getUser} from './utilities/users-service'
 import AuthPage from './pages/AuthPage';
 import NewOrderPage from './pages/NewOrderPage';
 import OrderHistory from './pages/OrderHistory';
@@ -20,15 +20,16 @@ function App() {
       { user? (
       <>
           {/* <NavBar user={user} /> */}
-          <FeedPage />
+          {/* <FeedPage /> */}
           <Routes>
+            <Route path='/' element={<FeedPage />} />
+            <Route path='/home' element={<HomePage user={user} />} />
             <Route path='/orders/new' element={<NewOrderPage/>} />
             <Route path='/orders' element={<OrderHistory/>} />
           </Routes>
         </>
       ) : (
         <>
-        <NavBar setUser={setUser}/> 
         <Routes> 
             <Route path='/' element={<HomePage setUser={setUser}/>} />
             <Route path='/auth' element={<AuthPage setUser={setUser}/>} />
