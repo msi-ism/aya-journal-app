@@ -293,12 +293,13 @@ body > .main-container {
 
 .feed-container > .feed-header {
   display: flex;
-  width: 100%;
+  width: 80vw;
   height: 15vh;
   position: fixed;
   background-color: purple;
+  align-content: center;
   justify-content: center;
-  margin-left: 8vw;
+  margin-left: 20vw;
 }
 
 .feed-container > .scroll-container {
