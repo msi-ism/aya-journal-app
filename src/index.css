@@ -65,7 +65,7 @@ main {
 h1 {
   font-family: var(--font-header);
   font-weight: 600;
-  font-size: 11vh;
+  font-size: 3em;
   color: white;
 }
 
@@ -196,7 +196,7 @@ button[type="submit"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 10vmin;
+  height: 8vmin;
   background-color: rgba(0, 0, 0, .1);
   width: 100vw;
   padding: 25px;
@@ -218,15 +218,17 @@ button[type="submit"] {
 
 
 body > .main-container {
-  width: 100%;
+  width: auto;
   height: 100%;
+  display: flex;
+  justify-items: center;
 }
 
 .main-container > .home-cardcontainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 20px;
   height: 100%;
   width: 95vw;
@@ -236,6 +238,18 @@ body > .main-container {
   width: 30vw;
   height: 300px;
   background-color: var(--green-1);
+  box-shadow: 10px 8px 3px -4px var(--purple-2);
+}
+
+.post-card > .lower-card {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 5px;
+  padding: 0 5px;
+  width: 100%;
+  height: auto;
+  background-color: #9F73AB;
 }
 
 .footer-container {
@@ -243,4 +257,8 @@ body > .main-container {
   width: 100%;
   background-color: black;
   color: white;
+}
+
+.magic-word {
+  color: var(--darkgreen)
 }
