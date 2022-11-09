@@ -118,6 +118,7 @@ h1 {
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
   width: 50vw;
+  margin-bottom: 10%;
 
 }
 
@@ -272,7 +273,7 @@ body > .main-container {
 }
 
 .footer-container {
-  height: 200px;
+  height: 30vh;
   width: 100%;
   background-color: black;
   color: white;

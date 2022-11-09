@@ -20,6 +20,7 @@ function App() {
       <>
           <NavBar user={user} />
           <Routes> 
+            <Route path='/auth' element={<AuthPage/>} />
             <Route path='/orders/new' element={<NewOrderPage/>} />
             <Route path='/orders' element={<OrderHistory/>} />
           </Routes>
@@ -27,8 +28,12 @@ function App() {
         </>
       ) : (
         <>
-        <NavBar setUser={setUser}/>  
-        <HomePage />
+        <NavBar setUser={setUser}/> 
+        <Routes> 
+            <Route path='/' element={<HomePage />} />
+            <Route path='/auth' element={<AuthPage/>} />
+          </Routes>
+
         {/* <AuthPage setUser={setUser} /> */}
         <Footer />
       </>
