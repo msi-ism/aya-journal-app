@@ -241,7 +241,7 @@ body > .main-container {
   width: 30vw;
   height: auto;
   background-color: var(--tan-4);
-  box-shadow: 10px 8px 3px -4px var(--purple-2);
+  box-shadow: 10px 8px 10px 2px rgba(75, 0, 130, .2);
   border-radius: 20px;
 }
 
