@@ -5,8 +5,7 @@ import shareIco from './send.png'
 const PostCard = () => {
     return (
         <div className="post-card">
-            <h3>Post Question</h3>
-            <h2>Post Title</h2>
+            <h2>Post Question</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat non tortor non venenatis. Nulla eget erat pellentesque, ultrices diam.
             </p>
             <p>

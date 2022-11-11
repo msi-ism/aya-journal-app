@@ -20,8 +20,8 @@ const UserNav = ({user, setUser}) => {
                 <div className='user-nav-item user-link'>Journals</div>
             </div>
             <div className='acct-block'>
-                <div className="user-nav-item acct-link">Account Settings</div>
-                <Link className="user-nav-item acct-link" onClick={handleLogOut}>SignOut</Link>
+                <div className="acct-link">Account Settings</div>
+                <Link className="acct-link" onClick={handleLogOut}>SignOut</Link>
             </div>
         </div>
     );

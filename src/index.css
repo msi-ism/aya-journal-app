@@ -42,6 +42,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, #CC3F60, #824C88);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: 0vmin;
   height: 100%;
   width: 100%;
@@ -306,6 +308,8 @@ button[type="submit"] {
   width: 100%;
   height: 100vh;
   background-color: transparent;
+
+
 }
 
 .feed-container > .feed-header {
@@ -313,8 +317,8 @@ button[type="submit"] {
   width: 80vw;
   height: 15vh;
   position: fixed;
-  background-color: purple;
-  align-content: center;
+  background-color: var(--darkgreen);
+  align-items: center;
   justify-content: center;
   margin-left: 20vw;
 }
@@ -329,6 +333,9 @@ button[type="submit"] {
   height: 85vh;
   align-items: center;
   background-color: transparent;
+  position: absolute;
+  z-index: 0;
+  overflow-y: scroll;
 }
 
 .scroll-container > .post-card {
@@ -339,9 +346,6 @@ button[type="submit"] {
   border-radius: 20px;
 
 }
-
-
-
 .feed-container > .user-nav {
   display: flex;
   flex-direction: column;
@@ -350,14 +354,14 @@ button[type="submit"] {
   font-size: 20px;
   position: fixed;
   color: white;
-  background-color: black;
+  background-color: rgba(0, 0, 0, .5);
 }
 .user-nav > .user-links {
   height: 100%;
 }
 
 .user-links > .user-link {
-  border-bottom: 1px solid white;
+
   padding-top: 5px;
   padding-bottom: 5px;
   height: 33%;
@@ -369,13 +373,26 @@ button[type="submit"] {
 
 .user-nav > .acct-block {
   height: auto;
+  border-top: 1px solid rgba(255, 255, 255, .5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding: 55px;
+}
+
+.acct-block > .acct-link {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 50px;
 }
 
 
 .user-nav > .user-block {
   height: 265px;
   padding: 20px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
 }
 
 .user-block > .profile-pic {
@@ -383,9 +400,67 @@ button[type="submit"] {
 }
 
 .acct-block > .user-nav-item {
-  border-bottom: 1px solid white;
   padding-top: 5px;
   padding-bottom: 5px;
   height: 50px;
+}
+
+.feed-container > .journal-container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  background-color: rgba(108, 122, 137, .4);
+
+
+}
+
+.journal-container > .journal-canvas {
+  height: 600px;
+  width: 60vw;
+  background-color: var(--tan-4);
+  position: absolute;
+  z-index: 1;
+  margin-left: 20vw;
+  border-radius: 20px;
+
+}
+
+.journal-canvas > .upper-canvas {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.journal-canvas > .body-canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.body-canvas > textarea {
+  height: 70%;
+  width: 85%;
+  resize: none;
+  border: none;
+  padding: 10px;
+}
+
+.upper-canvas > .canvas-exit {
+  position: fixed;
+  width: auto;
+  height: auto;
+  margin-left: 50%;
+  cursor: pointer;
+}
+
+
+.feed-header > .new-post-btn {
+  position: fixed;
+  margin-left: 60vw;
+  cursor: pointer;
 
 }
