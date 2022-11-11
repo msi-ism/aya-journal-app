@@ -4,13 +4,27 @@ const closeWindow = () => {
     let journalCanvas = document.querySelector('.journal-container')
     journalCanvas.style.visibility = 'hidden'
 }
+let privatePost = true
+
+const switchPrivacy = () => {
+    let privacyBtn = document.querySelector('.privacy-btn')
+    if (privatePost) {
+        privacyBtn.textContent = 'Public'
+        privatePost = false
+    } else {
+        privacyBtn.textContent = 'Private'
+        privatePost = true
+    }
+
+}
 
 
 const JournalEntry = () => {
-    // useEffect(() => {
-    //     let journalCanvas = document.querySelector('.journal-container')
-
-    // }, [])
+    useEffect(() => {
+        let privacyBtn = document.querySelector('.privacy-btn')
+        privacyBtn.textContent = 'Private'
+        console.log(privacyBtn)
+    }, [])
     
     return (
         <div className='journal-container'>
@@ -27,7 +41,8 @@ const JournalEntry = () => {
                     <textarea placeholder="What's on your mind?"></textarea>
                 </div>
                 <div className='lower-canvas'>
-                    
+                    <button className='privacy-btn' onClick={switchPrivacy}>Public</button>
+                    <input type='submit' value='Publish'></input>
                 </div>
 
             </div>

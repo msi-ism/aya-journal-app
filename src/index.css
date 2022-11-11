@@ -436,6 +436,8 @@ button[type="submit"] {
   z-index: 1;
   margin-left: 20vw;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -447,12 +449,21 @@ button[type="submit"] {
 }
 
 .journal-canvas > .body-canvas {
-  height: 100%;
+  height: auto;
   width: 100%;
 }
 
+.journal-canvas > .lower-canvas {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
 .body-canvas > textarea {
-  height: 70%;
+  height: 370px;
   width: 85%;
   resize: none;
   border: none;
