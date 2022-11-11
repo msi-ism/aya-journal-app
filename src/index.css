@@ -186,10 +186,10 @@ button:disabled, form:invalid button[type="submit"] {
   background-color: var(--purple-1);
 }
 
-button[type="submit"] {
+/* button[type="submit"] {
   grid-column: span 2;
-  margin: 1vmin 0 0;
-}
+  margin: 2vmin 0 0;
+} */
 
 .login {
 
@@ -456,10 +456,16 @@ button[type="submit"] {
 .journal-canvas > .lower-canvas {
   display: flex;
   flex-direction: row;
+  height: 100%;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  height: 100%;
 
+}
+
+.lower-canvas > .privacy-btn {
+  background-color: var(--purple-1);
+  width: 85px;
 }
 
 .body-canvas > textarea {
