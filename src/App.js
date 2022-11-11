@@ -22,7 +22,7 @@ function App() {
           {/* <NavBar user={user} /> */}
           {/* <FeedPage /> */}
           <Routes>
-            <Route path='/' element={<FeedPage />} />
+            <Route path='/' element={<FeedPage user={user}/>} />
             <Route path='/home' element={<HomePage user={user} />} />
             <Route path='/orders/new' element={<NewOrderPage/>} />
             <Route path='/orders' element={<OrderHistory/>} />

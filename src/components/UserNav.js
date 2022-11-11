@@ -12,11 +12,12 @@ const UserNav = ({user, setUser}) => {
         <div className='user-nav'>
             <div className="user-nav-item user-block">
                 <img className='profile-pic' src={profilePic}/>
-                <h4>User Block</h4>
+                <h4>{user.name}</h4>
             </div>
             <div className='user-links'>
                 <Link to='/home' className='user-nav-item user-link'>Home</Link>
                 <div className='user-nav-item user-link'>Assessments</div>
+                <div className='user-nav-item user-link'>Browse Prompts</div>
                 <div className='user-nav-item user-link'>Journals</div>
             </div>
             <div className='acct-block'>

@@ -11,7 +11,7 @@ const handleClick = () => {
 
 
 
-const FeedPage = () => {
+const FeedPage = ({user}) => {
     useEffect(() => {
         let journalCanvas = document.querySelector('.journal-container')
         journalCanvas.style.visibility = 'hidden'
@@ -24,7 +24,7 @@ const FeedPage = () => {
                 <h1>Feed Page</h1>
                 <input className='new-post-btn btn' type='button' value='Create New Post' onClick={handleClick}></input>
             </div>
-            <UserNav />
+            <UserNav user={user}/>
             <div className="scroll-container">
                 <h1>Question of the Day</h1>
                 <PostCard />
