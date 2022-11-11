@@ -260,6 +260,10 @@ button[type="submit"] {
   border-radius: 20px;
 }
 
+.post-card > .post-card-body {
+  padding: 0px 20px 15px 20px;
+}
+
 .post-card > .lower-card {
   display: flex;
   flex-direction: row;
@@ -277,6 +281,7 @@ button[type="submit"] {
   display: inline-flex;
   flex: 1;
   color: blue;
+  cursor: pointer;
 }
 
 .lower-card > .card-actions {
@@ -284,6 +289,7 @@ button[type="submit"] {
   align-items: center;
   align-self: right;
   gap: 10px;
+  cursor: pointer;
 }
 
 .card-actions > .card-ico {
@@ -306,7 +312,7 @@ button[type="submit"] {
 .feed-container {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: transparent;
 
 
@@ -368,6 +374,7 @@ button[type="submit"] {
   justify-content: center;
   align-items: center;
   height: 25%;
+  color: white;
 
 }
 
@@ -387,6 +394,7 @@ button[type="submit"] {
   padding-top: 5px;
   padding-bottom: 5px;
   height: 50px;
+  color: white;
 }
 
 
