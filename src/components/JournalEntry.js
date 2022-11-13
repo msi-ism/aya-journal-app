@@ -2,7 +2,9 @@ import { useState, useEffect } from "react"
 import xIco from './x.png'
 import pp from './jp.jpeg'
 import TextEditor from "./TextEditor"
+import questionBank from "../data/Questions"
 
+const question = questionBank[1].body
 
 
 const closeWindow = () => {
@@ -53,7 +55,7 @@ const JournalEntry = ({user}) => {
                         <p>{user.name}</p>
                     </div>
                     <div className='canvas-title'>
-                        <h1>Question Prompt or Title</h1>
+                        <h1>{question}</h1>
                     </div>
                     <div className='canvas-exit' onClick={closeWindow}>
                         <img className='x-btn' src={xIco}></img>
