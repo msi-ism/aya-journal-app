@@ -34,7 +34,7 @@ const FeedPage = ({user}) => {
                 <PostCard />
                 <PostCard />
             </div>
-            <JournalEntry />
+            <JournalEntry user={user}/>
             
         </div>
     );

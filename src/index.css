@@ -445,8 +445,26 @@ button:disabled, form:invalid button[type="submit"] {
 .journal-canvas > .upper-canvas {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 100%;
+  background-color: var(--purple-3);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.upper-canvas > .entry-pic {
+  margin-right: 50%;
+  position: fixed;
+  margin-top: 1%;
+  color: white;
+  font-size: 12px;
+}
+
+.entry-pic > .profile-pic {
+  max-width: 75px;
+  border-radius: 100%;
+  margin-bottom: -15%;
 }
 
 .journal-canvas > .body-canvas {
@@ -469,12 +487,19 @@ button:disabled, form:invalid button[type="submit"] {
   width: 85px;
 }
 
+
+.lower-canvas > .submit-btn {
+  background-color: var(--green-1);
+  width: 85px;
+}
+
 .body-canvas > textarea {
   height: 370px;
-  width: 85%;
+  width: 80%;
   resize: none;
-  border: none;
+  border: 2px solid var(--purple-3);
   padding: 10px;
+  margin: 20px;
 }
 
 .upper-canvas > .canvas-exit {
