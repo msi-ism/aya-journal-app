@@ -3,6 +3,12 @@ import React from 'react';
 import './TextEditor.css'
 import '../../node_modules/draft-js/dist/Draft.css'
 import {Editor, EditorState, getDefaultKeyBinding, RichUtils} from 'draft-js'
+import headingIco from './icons/heading.png'
+import numlistIco from './icons/numlist.png'
+import listIco from './icons/list.png'
+import italicsIco from './icons/italics.png'
+import boldIco from './icons/bold.png'
+import underlineIco from './icons/underline-text.png'
 
 class TextEditor extends React.Component {
     constructor(props) {
@@ -66,7 +72,7 @@ class TextEditor extends React.Component {
       // If the user changes block type before entering any text, we can
       // either style the placeholder or hide it. Let's just hide it now.
       let className = 'RichEditor-editor';
-      var contentState = editorState.getCurrentContent();
+      let contentState = editorState.getCurrentContent();
       if (!contentState.hasText()) {
         if (contentState.getBlockMap().first().getType() !== 'unstyled') {
           className += ' RichEditor-hidePlaceholder';
@@ -93,7 +99,8 @@ class TextEditor extends React.Component {
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.mapKeyToEditorCommand}
               onChange={this.onChange}
-              placeholder="Tell a story..."
+              placeholder="Tell your story..."
+              // ^ Below line of code causing 'ref string' bug. Need to figure out why.
               ref="editor"
               spellCheck={true}
             />
@@ -136,30 +143,30 @@ class TextEditor extends React.Component {
       }
 
       return (
-        <span className={className} onMouseDown={this.onToggle}>
-          {this.props.label}
-        </span>
+        <div className={className} onMouseDown={this.onToggle}>
+          <img className='ico-img' src={this.props.img}></img>
+        </div>
       );
     }
   }
 
   const BLOCK_TYPES = [
-    {label: 'H1', style: 'header-one'},
-    {label: 'H2', style: 'header-two'},
-    {label: 'H3', style: 'header-three'},
+    // {label: 'H1', style: 'header-one'},
+    {label: 'H1', style: 'header-two', img: headingIco},
+    // {label: 'H3', style: 'header-three'},
     // {label: 'H4', style: 'header-four'},
     // {label: 'H5', style: 'header-five'},
     // {label: 'H6', style: 'header-six'},
     // {label: 'Blockquote', style: 'blockquote'},
-    {label: 'UL', style: 'unordered-list-item'},
-    {label: 'OL', style: 'ordered-list-item'},
+    {label: 'UL', style: 'unordered-list-item', img: listIco},
+    {label: 'OL', style: 'ordered-list-item', img: numlistIco},
   ];
 
   let INLINE_STYLES = [
-    {label: 'Bold', style: 'BOLD'},
-    {label: 'Italic', style: 'ITALIC'},
-    {label: 'Underline', style: 'UNDERLINE'},
-    {label: 'Monospace', style: 'CODE'},
+    {label: 'Bold', style: 'BOLD', img: boldIco},
+    {label: 'Italic', style: 'ITALIC', img: italicsIco},
+    {label: 'Underline', style: 'UNDERLINE', img: underlineIco},
+    // {label: 'Monospace', style: 'CODE'},
   ];
 
 
@@ -178,6 +185,7 @@ class TextEditor extends React.Component {
             key={type.label}
             active={type.style === blockType}
             label={type.label}
+            img={type.img}
             onToggle={props.onToggle}
             style={type.style}
           />
@@ -197,6 +205,7 @@ class TextEditor extends React.Component {
             key={type.label}
             active={currentStyle.has(type.style)}
             label={type.label}
+            img={type.img}
             onToggle={props.onToggle}
             style={type.style}
           />
