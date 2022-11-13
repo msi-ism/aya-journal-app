@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import xIco from './x.png'
 
 const closeWindow = () => {
     let journalCanvas = document.querySelector('.journal-container')
@@ -39,7 +40,7 @@ const JournalEntry = () => {
                         <h1>Question Prompt or Title</h1>
                     </div>
                     <div className='canvas-exit' onClick={closeWindow}>
-                        X
+                        <img className='x-btn' src={xIco}></img>
                     </div>
                 </div>
                 <div className='body-canvas'>

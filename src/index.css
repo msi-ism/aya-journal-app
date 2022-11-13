@@ -438,6 +438,7 @@ button:disabled, form:invalid button[type="submit"] {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  box-shadow: 10px 8px 28px 25px rgba(0, 0, 0, .3);
 
 }
 
@@ -480,8 +481,16 @@ button:disabled, form:invalid button[type="submit"] {
   position: fixed;
   width: auto;
   height: auto;
-  margin-left: 50%;
+  margin-left: 54%;
+  margin-bottom: 3%;
   cursor: pointer;
+  border-radius: 100%;
+  text-align: center;
+  padding: 2px;
+}
+.canvas-exit > .x-btn {
+  width: 15px;
+  height: auto;
 }
 
 
