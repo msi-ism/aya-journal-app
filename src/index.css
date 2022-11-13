@@ -68,7 +68,6 @@ h1 {
   font-family: var(--font-header);
   font-weight: 600;
   font-size: 3em;
-  color: white;
 }
 
 .align-ctr {
@@ -460,6 +459,9 @@ button:disabled, form:invalid button[type="submit"] {
   color: white;
   font-size: 12px;
 }
+.upper-canvas > .canvas-title {
+  color: white;
+}
 
 .entry-pic > .profile-pic {
   max-width: 75px;
@@ -470,7 +472,10 @@ button:disabled, form:invalid button[type="submit"] {
 .journal-canvas > .body-canvas {
   height: auto;
   width: 100%;
+  color: black !important;
 }
+
+
 
 .journal-canvas > .lower-canvas {
   display: flex;

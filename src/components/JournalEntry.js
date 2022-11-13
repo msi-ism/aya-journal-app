@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react"
 import xIco from './x.png'
 import pp from './jp.jpeg'
+import TextEditor from "./TextEditor"
+
+
+
 const closeWindow = () => {
     let journalCanvas = document.querySelector('.journal-container')
     journalCanvas.style.visibility = 'hidden'
@@ -56,7 +60,8 @@ const JournalEntry = ({user}) => {
                     </div>
                 </div>
                 <div className='body-canvas'>
-                    <textarea placeholder="What's on your mind?"></textarea>
+                    {/* <textarea placeholder="What's on your mind?"></textarea> */}
+                    <TextEditor />
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
