@@ -14,7 +14,7 @@ const noteSchema = new mongoose.Schema(
         notebook: { 
             type: String, 
             required: true,
-            default: 'Default Notebook'
+            default: `'Default Notebook'`
         },
         title: { 
             type: String,

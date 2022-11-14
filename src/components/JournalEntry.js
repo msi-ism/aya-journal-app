@@ -40,10 +40,11 @@ async function handleSubmit(evt) {
   try {
     console.log('button working')
     console.log(body)
+    let notebook = `${user.username}'s Notebook`
     const noteData = {
         author: user.name,
         username: user.username,
-        // notebook: this.state.email,
+        notebook: notebook,
         title: question,
         body: body,
         public: privatePost ? false : true
@@ -124,7 +125,7 @@ async function handleSubmit(evt) {
                     <form onSubmit={handleSubmit}>
                         <input type='hidden' name='author' value={user.name}></input>
                         <input type='hidden' name='username' value={user.username}></input>
-                        <input type='hidden' name="notebook" value={'default'}></input>
+                        <input type='hidden' name="notebook" default={'default-tesst'}></input>
                         <input type='hidden' name='title' value={question}></input>
                         <input type='hidden' name='body' value={body}></input>
                         <input type='hidden' name='likes' value={0}></input>
