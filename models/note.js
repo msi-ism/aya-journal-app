@@ -1,17 +1,22 @@
 
 const mongoose = require('mongoose')
 
-const blogSchema = new mongoose.Schema(
+const noteSchema = new mongoose.Schema(
     {
         author: { 
             type: String, 
             required: true 
         },
+        notebook: { 
+            type: String, 
+            required: true,
+            default: 'Default Notebook'
+        },
         title: { 
             type: String,
             required: false
         },
-        markdown: { 
+        body: { 
             type: String, 
             required: true 
         },
@@ -28,7 +33,7 @@ const blogSchema = new mongoose.Schema(
             createdAt: 'created_at' }
     }
 )
-const Blog = mongoose.model('Blog', blogSchema)
+const Note = mongoose.model('Note', noteSchema)
 
-module.exports = Blog
+module.exports = Note
 

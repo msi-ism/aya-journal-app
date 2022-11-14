@@ -1,14 +1,17 @@
 import React from 'react';
-
+import {useSubmit} from 'react'
 import './TextEditor.css'
 import '../../node_modules/draft-js/dist/Draft.css'
-import {Editor, EditorState, getDefaultKeyBinding, RichUtils} from 'draft-js'
+import {Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw} from 'draft-js'
 import headingIco from './icons/heading.png'
 import numlistIco from './icons/numlist.png'
 import listIco from './icons/list.png'
 import italicsIco from './icons/italics.png'
 import boldIco from './icons/bold.png'
 import underlineIco from './icons/underline-text.png'
+import * as submitPage from '../utilities/notes-api'
+import { json } from 'react-router-dom';
+
 
 class TextEditor extends React.Component {
     constructor(props) {
@@ -66,9 +69,9 @@ class TextEditor extends React.Component {
       );
     }
 
+
     render() {
       const {editorState} = this.state;
-
       // If the user changes block type before entering any text, we can
       // either style the placeholder or hide it. Let's just hide it now.
       let className = 'RichEditor-editor';
@@ -78,6 +81,13 @@ class TextEditor extends React.Component {
           className += ' RichEditor-hidePlaceholder';
         }
       }
+
+
+      let noteBody = editorState.getCurrentContent()
+      let jsonBody = JSON.stringify(convertToRaw(contentState))
+      console.log(noteBody.getPlainText())
+      console.log(jsonBody)
+      this.props.setBody(jsonBody)
 
       return (
         <div className="RichEditor-root">
@@ -92,6 +102,7 @@ class TextEditor extends React.Component {
             />
              </div>
           <div className={className} onClick={this.focus}>
+
             <Editor
               blockStyleFn={getBlockStyle}
               customStyleMap={styleMap}
@@ -104,6 +115,7 @@ class TextEditor extends React.Component {
               ref="editor"
               spellCheck={true}
             />
+            <button className='editor-submit-btn' type='submit' label='Submit'>Submit</button>
           </div>
         </div>
       );

@@ -6,21 +6,35 @@
     padding: 15px;
     height: 100%;
   }
-.RichEditor-root > .edit-controls {
+
+
+  
+  .RichEditor-root > .edit-controls {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-  }
-
-  
-  .RichEditor-editor {
+    }
+    
+    
+.RichEditor-editor {
     border-top: 1px solid #ddd;
     cursor: text;
     font-size: 16px;
     margin-top: 10px;
-  }
-  
+    }
+
+
+ .editor-submit-btn {
+        background-color: blue !important;
+        width: 100px;
+        height: 40px;
+        position: fixed;
+        margin-left: 50%;
+        margin-top: 17%;
+        color: white;
+      }
+    
   .RichEditor-editor .public-DraftEditorPlaceholder-root,
   .RichEditor-editor .public-DraftEditor-content {
     margin: 0 -15px -15px;
@@ -28,9 +42,12 @@
   }
   
   .RichEditor-editor .public-DraftEditor-content {
-    min-height: 100px;
+    min-height: 325px;
+    width: 100%;
+
   }
   
+
   .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
     display: none;
   }

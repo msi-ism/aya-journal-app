@@ -3,6 +3,7 @@ import xIco from './x.png'
 import pp from './jp.jpeg'
 import TextEditor from "./TextEditor"
 import questionBank from "../data/Questions"
+import * as notesAPI from '../utilities/notes-api'
 
 const question = questionBank[1].body
 
@@ -16,8 +17,38 @@ let privatePost = true
 
 const JournalEntry = ({user}) => {
     const [mode, setMode] = useState('Save')
+    const [note, setNote] = useState({
+        // notebook: '',
+        title: '',
+        body: ''
+    })
 
-    
+    const [error, setError] = useState('');
+
+function handleChange(evt) {
+  setNote({ ...note, [evt.target.name]: evt.target.value });
+  setError('');
+}
+    const [body, setBody] = useState('')
+
+async function handleSubmit(evt) {
+  // Prevent form from being submitted to the server
+  evt.preventDefault();
+  try {
+    console.log('button working')
+    console.log(body)
+    const newNote = {
+        author: user.name,
+        // notebook: this.state.email,
+        title: question,
+        body: body,
+        public: this.mode
+    }
+  } catch {
+    setError('Error getting data');
+  }
+}
+
     const switchPrivacy = (mode) => {
         if (privatePost) {
             setMode('Share')
@@ -38,7 +69,6 @@ const JournalEntry = ({user}) => {
         }
     }
 
-
     useEffect(() => {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.submit-btn')
@@ -48,7 +78,7 @@ const JournalEntry = ({user}) => {
 
     return (
         <div className='journal-container'>
-            <div className='journal-canvas'>
+            <div className='journal-canvas' onSubmit={handleSubmit}>
                 <div className='upper-canvas'>
                     <div className="entry-pic">
                         <img className='profile-pic' src={pp}></img>
@@ -63,12 +93,12 @@ const JournalEntry = ({user}) => {
                 </div>
                 <div className='body-canvas'>
                     {/* <textarea placeholder="What's on your mind?"></textarea> */}
-                    <TextEditor />
+                    <TextEditor setBody={setBody} />
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy}/>{privatePost ? 'Private' : 'Public'}
-                        <button className='submit-btn' type='submit'>{mode}</button>
+                        <button className='submit-btn' type='submit' onClick={handleSubmit}>{mode}</button>
                     </div>
                 </div>
 
