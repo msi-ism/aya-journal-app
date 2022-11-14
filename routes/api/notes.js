@@ -8,7 +8,8 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 // ^ // GET /api/users/check-token
 // router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 
-router.post('/new-note', notesCtrl.create)
+router.post('/', notesCtrl.create)
 
 
+console.log('notes route hit')
 module.exports = router

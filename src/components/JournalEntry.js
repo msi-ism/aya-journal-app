@@ -4,6 +4,7 @@ import pp from './jp.jpeg'
 import TextEditor from "./TextEditor"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
+import {create} from '../utilities/notes-service'
 
 const question = questionBank[1].body
 
@@ -37,13 +38,16 @@ async function handleSubmit(evt) {
   try {
     console.log('button working')
     console.log(body)
-    const newNote = {
+    const noteData = {
         author: user.name,
         // notebook: this.state.email,
         title: question,
         body: body,
-        public: this.mode
+        public: privatePost ? true : false
     }
+    create(noteData)
+    console.log(noteData)
+    closeWindow()
   } catch {
     setError('Error getting data');
   }
@@ -82,7 +86,7 @@ async function handleSubmit(evt) {
                 <div className='upper-canvas'>
                     <div className="entry-pic">
                         <img className='profile-pic' src={pp}></img>
-                        <p>{user.name}</p>
+                        <p name='name' >{user.name}</p>
                     </div>
                     <div className='canvas-title'>
                         <h1>{question}</h1>
@@ -92,8 +96,16 @@ async function handleSubmit(evt) {
                     </div>
                 </div>
                 <div className='body-canvas'>
+                    <form onSubmit={handleSubmit}>
+                        <input type='hidden' name='author' value={user.name}></input>
+                        <input type='hidden' name="notebook" value={'default'}></input>
+                        <input type='hidden' name='title' value={question}></input>
+                        <input type='hidden' name='body' value={body}></input>
+                        <input type='hidden' name='likes' value={0}></input>
+                        <input type='hidden' name='public' value={privatePost ? true : false}></input>
+                    </form>
                     {/* <textarea placeholder="What's on your mind?"></textarea> */}
-                    <TextEditor setBody={setBody} />
+                    <TextEditor {...{setBody, handleSubmit}} />
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">

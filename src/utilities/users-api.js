@@ -23,6 +23,7 @@ async function sendRequest(url, method = 'GET', payload = null) {
     if (payload) {
         options.headers = { 'Content-Type': 'application/json' }
         options.body = JSON.stringify(payload);
+        console.log(payload)
       }
     // ^Add the below code
     const token = getToken();

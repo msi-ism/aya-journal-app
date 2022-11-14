@@ -9,8 +9,7 @@ import listIco from './icons/list.png'
 import italicsIco from './icons/italics.png'
 import boldIco from './icons/bold.png'
 import underlineIco from './icons/underline-text.png'
-import * as submitPage from '../utilities/notes-api'
-import { json } from 'react-router-dom';
+
 
 
 class TextEditor extends React.Component {
@@ -102,7 +101,6 @@ class TextEditor extends React.Component {
             />
              </div>
           <div className={className} onClick={this.focus}>
-
             <Editor
               blockStyleFn={getBlockStyle}
               customStyleMap={styleMap}
@@ -110,6 +108,7 @@ class TextEditor extends React.Component {
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.mapKeyToEditorCommand}
               onChange={this.onChange}
+              onSubmit={this.props.handleSubmit}
               placeholder="Tell your story..."
               // ^ Below line of code causing 'ref string' bug. Need to figure out why.
               ref="editor"

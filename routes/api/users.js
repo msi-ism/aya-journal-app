@@ -10,9 +10,10 @@ router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 
 router.post('/login', usersCtrl.login)
 
-router.post('/new-note', )
 
 router.post('/', usersCtrl.create)
+
+
 
 
 module.exports = router

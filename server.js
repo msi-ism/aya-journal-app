@@ -20,11 +20,13 @@ app.use(express.json())
 // ^ to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
-
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // ^ API Routes - reads top to bottom
 
 app.use('/api/users', require('./routes/api/users'))
+app.use('/api/notes', require('./routes/api/notes'))
 
 // ^ Catch ALL to serve the production app
 app.get('/*', (req, res) => {
