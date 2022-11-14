@@ -8,7 +8,9 @@ import { signUp } from '../utilities/users-service';
 export default class SignUpForm extends Component {
     state = {
         name: '',
+        username: '',
         email: '',
+        img: '',
         password: '',
         confirm: '',
         error: ''
@@ -25,7 +27,9 @@ export default class SignUpForm extends Component {
             // ^ create formData to send to backend
             const formData = {
                 name: this.state.name,
+                username: this.state.username,
                 email: this.state.email,
+                img: this.state.img,
                 password: this.state.password
             }
             // ^ pass the formData to the SignUp function
@@ -52,11 +56,23 @@ export default class SignUpForm extends Component {
                 name="name" 
                 value={this.state.name} 
                 onChange={this.handleChange} required />
+                <label>Username</label>
+                <input 
+                type="text" 
+                name="username" 
+                value={this.state.username} 
+                onChange={this.handleChange} required />
                 <label>Email</label>
                 <input 
                 type="email" 
                 name="email" 
                 value={this.state.email} 
+                onChange={this.handleChange} required />
+                <label>IMG</label>
+                <input 
+                type="text" 
+                name="img" 
+                value={this.state.img} 
                 onChange={this.handleChange} required />
                 <label>Password</label>
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />

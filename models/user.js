@@ -27,6 +27,9 @@ const userSchema = new Schema({
       trim: true,
       minLength: 3,
       required: true
+    },
+    img: {
+      type: String,
     }
   }, {
     timestamps: true,

@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import xIco from './x.png'
-import pp from './jp.jpeg'
 import TextEditor from "./TextEditor"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
 import {create} from '../utilities/notes-service'
 
-const question = questionBank[1].body
+
+const question = questionBank[4].body
 
 
 const closeWindow = () => {
@@ -40,6 +40,7 @@ async function handleSubmit(evt) {
     console.log(body)
     const noteData = {
         author: user.name,
+        username: user.username,
         // notebook: this.state.email,
         title: question,
         body: body,
@@ -80,13 +81,15 @@ async function handleSubmit(evt) {
         console.log(privacyBtn)
     }, [])
 
+
+
     return (
         <div className='journal-container'>
             <div className='journal-canvas' onSubmit={handleSubmit}>
                 <div className='upper-canvas'>
                     <div className="entry-pic">
-                        <img className='profile-pic' src={pp}></img>
-                        <p name='name' >{user.name}</p>
+                        <img className='profile-pic' src={`/images/${user.img}.png`}></img>
+                        <p >{user.username}</p>
                     </div>
                     <div className='canvas-title'>
                         <h1>{question}</h1>
@@ -98,6 +101,7 @@ async function handleSubmit(evt) {
                 <div className='body-canvas'>
                     <form onSubmit={handleSubmit}>
                         <input type='hidden' name='author' value={user.name}></input>
+                        <input type='hidden' name='username' value={user.username}></input>
                         <input type='hidden' name="notebook" value={'default'}></input>
                         <input type='hidden' name='title' value={question}></input>
                         <input type='hidden' name='body' value={body}></input>
