@@ -159,7 +159,7 @@ button, a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: green;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
@@ -406,6 +406,7 @@ button:disabled, form:invalid button[type="submit"] {
 
 .user-block > .profile-pic {
   max-height: 150px;
+  border-radius: 100%;
 }
 
 .acct-block > .user-nav-item {

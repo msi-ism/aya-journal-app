@@ -1,4 +1,4 @@
-import profilePic from './account.png'
+
 import { Link } from 'react-router-dom'
 import * as userService from '../utilities/users-service'
 
@@ -11,7 +11,7 @@ const UserNav = ({user, setUser}) => {
     return (
         <div className='user-nav'>
             <div className="user-nav-item user-block">
-                <img className='profile-pic' src={profilePic}/>
+                <img className='profile-pic' src={`/images/${user.img}.png`}/>
                 <h4>{user.name}</h4>
             </div>
             <div className='user-links'>

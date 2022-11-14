@@ -8,16 +8,18 @@ import {create} from '../utilities/notes-service'
 
 const question = questionBank[4].body
 
+let privatePost = false
+
+let switchText = ''
 
 const closeWindow = () => {
     let journalCanvas = document.querySelector('.journal-container')
     journalCanvas.style.visibility = 'hidden'
 }
 
-let privatePost = true
 
 const JournalEntry = ({user}) => {
-    const [mode, setMode] = useState('Save')
+    const [mode, setMode] = useState({})
     const [note, setNote] = useState({
         // notebook: '',
         title: '',
@@ -44,41 +46,61 @@ async function handleSubmit(evt) {
         // notebook: this.state.email,
         title: question,
         body: body,
-        public: privatePost ? true : false
+        public: privatePost ? false : true
     }
     create(noteData)
     console.log(noteData)
     closeWindow()
+    setMode('Share')
   } catch {
     setError('Error getting data');
   }
 }
+    const publicMode = () => {
+        let privacyBtn = document.querySelector('.privacy-btn')
+        let inputText = document.querySelector('.input-text')
+        switchText = 'is Public'
+        privacyBtn.style.backgroundColor = 'green'
+        let submitBtn = document.querySelector('.submit-btn')
+        submitBtn.style.backgroundColor = 'green'
+        submitBtn.textContent = 'Publish'
+        inputText.textContent = 'is Public'
+        console.log('public')
+        privatePost = false
+        console.log(privatePost)
+    }
+
+    const privateMode = () => {
+        let privacyBtn = document.querySelector('.privacy-btn')
+        let inputText = document.querySelector('.input-text')
+        let submitBtn = document.querySelector('.submit-btn')
+        switchText = 'is Private'
+        submitBtn.style.backgroundColor = 'red'
+        submitBtn.textContent = 'Save'
+        privacyBtn.style.backgroundColor = 'maroon'
+        inputText.textContent = 'is Private'
+        console.log('is private again')
+        privatePost = true
+        setMode()
+        console.log(privatePost)
+
+    }
 
     const switchPrivacy = (mode) => {
         if (privatePost) {
-            setMode('Share')
-            privatePost = false
-            let privacyBtn = document.querySelector('.privacy-btn')
-            privacyBtn.style.backgroundColor = 'green'
-            let submitBtn = document.querySelector('.submit-btn')
-            submitBtn.style.backgroundColor = 'green'
-            console.log('public')
+            setMode(publicMode)
+            console.log('private mode switched to public' + switchText)
+
         } else {
-            setMode('Save')
-            privatePost = true
-            let privacyBtn = document.querySelector('.privacy-btn')
-            let submitBtn = document.querySelector('.submit-btn')
-            submitBtn.style.backgroundColor = 'red'
-            privacyBtn.style.backgroundColor = 'maroon'
-            console.log('is private again')
+            setMode(privateMode)
+            console.log('public mode switched to private' + switchText)
         }
     }
 
     useEffect(() => {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.submit-btn')
-        privacyBtn.textContent = 'Private'
-        console.log(privacyBtn)
+        publicMode()
     }, [])
 
 
@@ -113,8 +135,9 @@ async function handleSubmit(evt) {
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
-                        <input type='checkbox' className='privacy-btn' onClick={switchPrivacy}/>{privatePost ? 'Private' : 'Public'}
-                        <button className='submit-btn' type='submit' onClick={handleSubmit}>{mode}</button>
+                        {'Switch Privacy:'}
+                        <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
+                        <button className='submit-btn' type='submit' onClick={handleSubmit}></button>
                     </div>
                 </div>
 
