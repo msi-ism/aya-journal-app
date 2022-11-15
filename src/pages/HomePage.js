@@ -6,6 +6,7 @@ import * as notesService from '../utilities/notes-service';
 import likeIco from '../components/like.png'
 import commentIco from '../components/comment.png'
 import shareIco from '../components/send.png'
+import {Link} from 'react-router-dom'
 
 const verbs = ['be', 'see', 'know', 'grow', 'discover', 'love', 'heal']
 
@@ -72,7 +73,7 @@ const HomePage = ({ user }) => {
                         </div>
                     </div>
                 </div>
-                <h2>Sign up to create your personal reflection journal today. <br /><br />Let's <span className='magic-word'>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
+                <h2><Link to='/auth'>SignUp</Link> to create your personal reflection journal today. <br /><br />Let's <span className='magic-word'>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
             </div>
             ) : (
                 <div>Loading</div>
