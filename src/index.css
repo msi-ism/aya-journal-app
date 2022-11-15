@@ -134,7 +134,7 @@ li {
   border-radius: 1vmin;
   width: 50vw;
   margin-bottom: 10%;
-
+  
 }
 
 p.error-message {
@@ -148,6 +148,15 @@ form {
   gap: 1.25vmin;
   color: var(--text-light);
 }
+
+form > button {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  align-self: center;
+  width: auto;
+}
+
+
 
 label {
   font-size: 2vmin;
@@ -204,9 +213,6 @@ button:disabled, form:invalid button[type="submit"] {
   margin: 2vmin 0 0;
 } */
 
-.login {
-
-}
 
 .navbar {
   display: flex;
@@ -351,8 +357,8 @@ button:disabled, form:invalid button[type="submit"] {
   gap: 25px;
   width: 80vw;
   margin-left: 20vw;
-  margin-top: 5vh;
-  height: 95vh;
+  margin-top: 15vh;
+  height: 100%;
   align-items: center;
   background-color: transparent;
   position: absolute;
@@ -365,7 +371,7 @@ button:disabled, form:invalid button[type="submit"] {
   flex-direction: column;
   gap: 25px;
   width: 80vw;
-  margin-top: 15vh;
+
   height: 85vh;
   align-items: center;
   background-color: transparent;
