@@ -1,4 +1,7 @@
 import * as usersAPI from './users-api'
+import { useNavigate } from 'react-router-dom';
+
+
 
 export async function signUp(userData) {
     // ^ Delegate the network request code to the users-api.js API module
@@ -45,7 +48,13 @@ export async function signUp(userData) {
   }
 
 
-
   export function logOut() {
     localStorage.removeItem('token')
+  }
+
+  export function useRedirect() {
+    const navigate = useNavigate()
+    navigate('/home')
+    console.log('redirect hit')
+
   }

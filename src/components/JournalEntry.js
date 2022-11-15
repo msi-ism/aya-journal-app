@@ -4,9 +4,9 @@ import TextEditor from "./TextEditor"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
 import {create} from '../utilities/notes-service'
+import QuestionSelector from "./QuestionSelector"
 
-
-const question = questionBank[5].body
+const questions = questionBank
 
 let privatePost = false
 
@@ -34,6 +34,7 @@ function handleChange(evt) {
 }
     const [body, setBody] = useState('')
     const [plainBody, setPlainBody] = useState('')
+    const [question, setQuestion] = useState('')
 
 async function handleSubmit(evt) {
   // Prevent form from being submitted to the server
@@ -100,6 +101,8 @@ async function handleSubmit(evt) {
         }
     }
 
+
+
     useEffect(() => {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.submit-btn')
@@ -117,7 +120,8 @@ async function handleSubmit(evt) {
                         <p >{user.username}</p>
                     </div>
                     <div className='canvas-title'>
-                        <h1>{question}</h1>
+                        <QuestionSelector setQuestion={setQuestion}/>
+
                     </div>
                     <div className='canvas-exit' onClick={closeWindow}>
                         <img className='x-btn' src={xIco}></img>

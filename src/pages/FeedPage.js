@@ -10,7 +10,7 @@ import convertFromRaw from 'draft-js'
 import questionBank from "../data/Questions"
 
 
-const question = questionBank[4].body
+const questions = questionBank
 
 
 const handleClick = () => {
@@ -22,7 +22,7 @@ const handleClick = () => {
 
 
 
-const FeedPage = ({ user}) => {
+const FeedPage = ({ user }) => {
     const [notes, setNotes] = useState()
 
     const getNotes = async () => {
@@ -58,37 +58,36 @@ const FeedPage = ({ user}) => {
             </div>
             <UserNav user={user} />
             <div className="scroll-container">
-                <h1 className='feed-title'>{question}</h1>
                 {notes ?
-                <ul className='feed-list'>
-                    {notes.map((note, idx) => (
-                        <li key={idx} className='post-list'>
-                            <div className="post-card">
-                                <h2 className='card-title'>{note.title}</h2>
-                                <div className='post-card-body'>
-                                    <p>{note.plainBody}
-                                    </p>
-                                </div>
-                                <div className="lower-card">
-                                    <div className='card-user'>
-                                        <img className='profile-pic' src={`/images/${note.username}.png`}></img>
-                                        <p>@{note.username}</p>
+                    <ul className='feed-list'>
+                        {notes.map((note, idx) => (
+                            <li key={idx} className='post-list'>
+                                <div className="post-card">
+                                    <h2 className='card-title'>{note.title}</h2>
+                                    <div className='post-card-body'>
+                                        <p>{note.plainBody}
+                                        </p>
                                     </div>
-                                    <div className="card-actions">
-                                        <img className='card-ico' src={likeIco} />
-                                        <img className='card-ico' src={commentIco} />
-                                        <img className='card-ico' src={shareIco} />
+                                    <div className="lower-card">
+                                        <div className='card-user'>
+                                            <img className='profile-pic' src={`/images/${note.username}.png`}></img>
+                                            <p>@{note.username}</p>
+                                        </div>
+                                        <div className="card-actions">
+                                            <img className='card-ico' src={likeIco} />
+                                            <img className='card-ico' src={commentIco} />
+                                            <img className='card-ico' src={shareIco} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </li>
+                            </li>
 
 
-                    ))}
-                </ul>  :
-                <PostCard notes={notes} />
-                    }
+                        ))}
+                    </ul> :
+                    <PostCard notes={notes} />
+                }
             </div>
             <JournalEntry user={user} />
 

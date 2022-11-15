@@ -339,8 +339,8 @@ button:disabled, form:invalid button[type="submit"] {
   gap: 25px;
   width: 80vw;
   margin-left: 20vw;
-  margin-top: 15vh;
-  height: 85vh;
+  margin-top: 5vh;
+  height: 95vh;
   align-items: center;
   background-color: transparent;
   position: absolute;
@@ -440,7 +440,7 @@ button:disabled, form:invalid button[type="submit"] {
 
 .user-block > .profile-pic {
   max-height: 150px;
-  border-radius: 100%;
+  border-radius: 20px;
 }
 
 .acct-block > .user-nav-item {
