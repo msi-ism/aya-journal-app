@@ -84,9 +84,11 @@ class TextEditor extends React.Component {
 
       let noteBody = editorState.getCurrentContent()
       let jsonBody = JSON.stringify(convertToRaw(contentState))
+      let plainJSONBody = noteBody.getPlainText()
       console.log(noteBody.getPlainText())
       console.log(jsonBody)
       this.props.setBody(jsonBody)
+      this.props.setPlainBody(plainJSONBody)
 
       return (
         <div className="RichEditor-root">

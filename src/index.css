@@ -70,6 +70,10 @@ h1 {
   font-size: 3em;
 }
 
+li {
+  list-style: none;
+}
+
 .align-ctr {
   text-align: center;
 }
@@ -268,7 +272,7 @@ button:disabled, form:invalid button[type="submit"] {
   flex-direction: row;
   justify-content: right;
   gap: 5px;
-  padding: 0 15px;
+  padding: 8px 15px;
   width: 100%;
   height: auto;
   background-color: #9F73AB;
@@ -278,8 +282,9 @@ button:disabled, form:invalid button[type="submit"] {
 
 .lower-card > .card-user {
   display: inline-flex;
+  gap: 7px;
   flex: 1;
-  color: blue;
+  color: var(--darkgreen);
   cursor: pointer;
 }
 
@@ -341,16 +346,45 @@ button:disabled, form:invalid button[type="submit"] {
   position: absolute;
   z-index: 0;
   overflow-y: scroll;
+  
+}
+.scroll-container > .feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 80vw;
+  margin-top: 15vh;
+  height: 85vh;
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  z-index: 0;
+  overflow-y: scroll;
 }
 
-.scroll-container > .post-card {
+.scroll-container > .feed-title{
+  margin-bottom: 15px;
+  height: auto;
+  font-size: 5vh;
+}
+
+.feed-list > .post-list {
+
+  height: 100%;
+}
+
+.post-list > .post-card {
   width: 60vw;
   height: auto;
   background-color: var(--tan-4);
   box-shadow: 10px 8px 10px 2px rgba(75, 0, 130, .2);
   border-radius: 20px;
-
 }
+
+.post-card > .card-title {
+  padding-top: 20px;
+}
+
 .feed-container > .user-nav {
   display: flex;
   flex-direction: column;
@@ -474,6 +508,12 @@ button:disabled, form:invalid button[type="submit"] {
   border-radius: 100%;
   margin-bottom: -15%;
 }
+.card-user > .profile-pic {
+  max-width: 45px;
+  max-height: 45px;
+  border-radius: 100%;
+  margin-bottom: -15%;
+}
 
 .journal-canvas > .body-canvas {
   height: 100%;
@@ -481,8 +521,6 @@ button:disabled, form:invalid button[type="submit"] {
   color: black !important;
   background-color: pink;
 }
-
-
 
 
 .journal-canvas > .lower-canvas {

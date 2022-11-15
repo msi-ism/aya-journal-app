@@ -33,6 +33,7 @@ function handleChange(evt) {
   setError('');
 }
     const [body, setBody] = useState('')
+    const [plainBody, setPlainBody] = useState('')
 
 async function handleSubmit(evt) {
   // Prevent form from being submitted to the server
@@ -47,6 +48,7 @@ async function handleSubmit(evt) {
         notebook: notebook,
         title: question,
         body: body,
+        plainBody: plainBody,
         public: privatePost ? false : true
     }
     create(noteData)
@@ -128,11 +130,12 @@ async function handleSubmit(evt) {
                         <input type='hidden' name="notebook" default={'default-tesst'}></input>
                         <input type='hidden' name='title' value={question}></input>
                         <input type='hidden' name='body' value={body}></input>
+                        <input type='hidden' name='plainBody' value={plainBody}></input>
                         <input type='hidden' name='likes' value={0}></input>
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
                     {/* <textarea placeholder="What's on your mind?"></textarea> */}
-                    <TextEditor {...{setBody, handleSubmit}} />
+                    <TextEditor {...{setBody, handleSubmit, setPlainBody}} />
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
