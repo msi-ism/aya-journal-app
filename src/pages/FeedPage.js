@@ -19,9 +19,6 @@ const handleClick = () => {
 }
 
 
-
-
-
 const FeedPage = ({ user }) => {
     const [notes, setNotes] = useState()
 
@@ -80,9 +77,7 @@ const FeedPage = ({ user }) => {
                                         </div>
                                     </div>
                                 </div>
-
                             </li>
-
 
                         ))}
                     </ul> :

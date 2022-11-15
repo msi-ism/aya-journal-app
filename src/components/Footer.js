@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <div className='footer-container'>
-            <h2>Hello Footer</h2>
+            <p>©2022 BMS Development, All rights reserved.</p>
         </div>
     );
 }
