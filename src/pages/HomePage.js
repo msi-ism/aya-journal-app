@@ -72,7 +72,9 @@ const HomePage = ({ user }) => {
                         </div>
                     </div>
                 </div>
-            </div> ) : (
+                <h2>Sign up to create your personal reflection journal today. <br /><br />Let's <span className='magic-word'>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
+            </div>
+            ) : (
                 <div>Loading</div>
             )}
             <Footer />

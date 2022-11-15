@@ -255,15 +255,13 @@ button:disabled, form:invalid button[type="submit"] {
 
 .main-container > .home-cardcontainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  gap: 35px;
   height: 100%;
   width: 95vw;
-  margin-bottom: 13%;
-
-
-  
+  margin-bottom: 2%;
 }
 .home-cardcontainer > .post-card {
   width: 30vw;
@@ -271,6 +269,9 @@ button:disabled, form:invalid button[type="submit"] {
   background-color: var(--tan-4);
   box-shadow: 10px 8px 10px 2px rgba(75, 0, 130, .2);
   border-radius: 20px;
+}
+.highlight-word {
+  color: white;
 }
 
 .post-card > .post-card-body {
