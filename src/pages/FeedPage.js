@@ -1,7 +1,8 @@
 import UserNav from "../components/UserNav";
 import PostCard from "../components/PostCard";
 import JournalEntry from "../components/JournalEntry";
-import {useEffect} from 'react'
+import * as notesService from '../utilities/notes-service';
+import {useState, useEffect} from 'react'
 
 const handleClick = () => {
     let journalCanvas = document.querySelector('.journal-container')
@@ -11,12 +12,33 @@ const handleClick = () => {
 
 
 
-const FeedPage = ({user}) => {
+
+const FeedPage = ({user, allNotes}) => {
+    const [notes, setNotes] = useState(null)
+    
+    const getNotes = async () => {
+        try {
+            console.log('got em')
+            const data = await notesService.getAllNotes()
+            console.log(data)
+            setNotes(data)
+            console.log('got notes')
+            // ^ using Signup from users-service on formData collected here
+
+        } catch {
+            // ^ if we have an error
+            this.setState({error: "Can't get notes"})
+        }
+      }
+
     useEffect(() => {
         let journalCanvas = document.querySelector('.journal-container')
         journalCanvas.style.visibility = 'hidden'
-        console.log(journalCanvas)
+        getNotes()
+
     }, [])
+
+    console.log(notes)
     
     return (
         <div className='feed-container'>
@@ -27,11 +49,6 @@ const FeedPage = ({user}) => {
             <UserNav user={user}/>
             <div className="scroll-container">
                 <h1>Question of the Day</h1>
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
                 <PostCard />
             </div>
             <JournalEntry user={user}/>

@@ -8,6 +8,11 @@ export function create(noteData) {
   return sendRequest(`${BASE_URL}`, 'POST', noteData)
 }
 
+export function getAllNotes() {
+  console.log('here micheal')
+  return sendRequest(`${BASE_URL}`, 'GET')
+}
+
 // ^ Helper Functions
 
 async function sendRequest(url, method = 'GET', payload = null) {
@@ -15,16 +20,16 @@ async function sendRequest(url, method = 'GET', payload = null) {
     // ^ used to include a data payload, set headers, etc.
     const options = {method}
     if (payload) {
-        console.log(payload)
+        // console.log(payload)
         options.headers = { 'Content-Type': 'application/json' }
         options.body = JSON.stringify(payload);
         options.headers = options.headers || {}
-        console.log(payload)
+        // console.log(payload)
       }
     // ^ res.ok will be false if the status code set to 4xx in the controller action
     const res = await fetch(url, options);
     // ^ res.ok will be false if the status code set to 4xx in the controller action
-    if (res.ok) return res.json()
+    if (res.ok) return res.json(payload)
     throw new Error('Bad Request');
 }
 

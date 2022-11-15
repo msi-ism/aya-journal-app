@@ -2,6 +2,8 @@ import likeIco from './like.png'
 import commentIco from './comment.png'
 import shareIco from './send.png'
 
+
+
 const PostCard = () => {
     return (
         <div className="post-card">
