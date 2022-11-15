@@ -28,9 +28,9 @@ const userSchema = new Schema({
       minLength: 3,
       required: true
     },
-    img: {
-      type: String,
-    }
+    // img: {
+    //   type: String,
+    // }
   }, {
     timestamps: true,
     toJSON: {

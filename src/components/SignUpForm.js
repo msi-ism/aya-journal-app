@@ -11,7 +11,7 @@ export default class SignUpForm extends Component {
         name: '',
         username: '',
         email: '',
-        img: '',
+        // img: '',
         password: '',
         confirm: '',
         error: ''
@@ -30,7 +30,7 @@ export default class SignUpForm extends Component {
                 name: this.state.name,
                 username: this.state.username,
                 email: this.state.email,
-                img: this.state.img,
+                // img: this.state.img,
                 password: this.state.password
             }
             // ^ pass the formData to the SignUp function
@@ -70,12 +70,12 @@ export default class SignUpForm extends Component {
                 name="email" 
                 value={this.state.email} 
                 onChange={this.handleChange} required />
-                <label>IMG</label>
+                {/* <label>IMG</label>
                 <input 
                 type="text" 
                 name="img" 
                 value={this.state.img} 
-                onChange={this.handleChange} required />
+                onChange={this.handleChange} required /> */}
                 <label>Password</label>
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
                 <label>Confirm</label>
