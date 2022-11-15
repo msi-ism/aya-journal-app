@@ -113,7 +113,7 @@ async function handleSubmit(evt) {
             <div className='journal-canvas' onSubmit={handleSubmit}>
                 <div className='upper-canvas'>
                     <div className="entry-pic">
-                        <img className='profile-pic' src={`/images/${user.img}.png`}></img>
+                        <img className='profile-pic' src={`/images/${user.username}.png`}></img>
                         <p >{user.username}</p>
                     </div>
                     <div className='canvas-title'>

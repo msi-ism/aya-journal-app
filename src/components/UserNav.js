@@ -11,7 +11,7 @@ const UserNav = ({user, setUser}) => {
     return (
         <div className='user-nav'>
             <div className="user-nav-item user-block">
-                <img className='profile-pic' src={`/images/${user.img}.png`}/>
+                <img className='profile-pic' src={`/images/${user.username}.png`}/>
                 <h4>{user.name}</h4>
             </div>
             <div className='user-links'>
