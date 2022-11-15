@@ -345,10 +345,11 @@ button:disabled, form:invalid button[type="submit"] {
   width: 80vw;
   height: 15vh;
   position: fixed;
-  background-color: var(--darkgreen);
+  background-color: rgba(0, 0, 0, .2);
   align-items: center;
   justify-content: center;
   margin-left: 20vw;
+  z-index: 3;
 }
 
 .feed-container > .scroll-container {
@@ -371,11 +372,10 @@ button:disabled, form:invalid button[type="submit"] {
   flex-direction: column;
   gap: 25px;
   width: 80vw;
-
   height: 85vh;
   align-items: center;
   background-color: transparent;
-  position: absolute;
+  position: fixed;
   z-index: 0;
   overflow-y: scroll;
 }
@@ -384,10 +384,10 @@ button:disabled, form:invalid button[type="submit"] {
   margin-bottom: 15px;
   height: auto;
   font-size: 5vh;
+  color: white;
 }
 
 .feed-list > .post-list {
-
   height: 100%;
 }
 
@@ -411,7 +411,7 @@ button:disabled, form:invalid button[type="submit"] {
   font-size: 20px;
   position: fixed;
   color: white;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .4);
 }
 .user-nav > .user-links {
   height: 45%;
@@ -521,6 +521,16 @@ button:disabled, form:invalid button[type="submit"] {
   height: auto;
 }
 
+.question-selector {
+  height: auto;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, .2);
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  border: 3px solid grey;
+}
+
 .entry-pic > .profile-pic {
   max-width: 75px;
   border-radius: 100%;
@@ -592,5 +602,6 @@ button:disabled, form:invalid button[type="submit"] {
   position: fixed;
   margin-left: 60vw;
   cursor: pointer;
+  z-index: 3;
 
 }
