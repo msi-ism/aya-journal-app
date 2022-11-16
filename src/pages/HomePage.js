@@ -56,15 +56,15 @@ const HomePage = ({ user }) => {
             { notes ? (
             <div className="home-cardcontainer">
                 <div className="post-card">
-                    <h2 className='card-title'>{notes[4].title}</h2>
+                    <h2 className='card-title'>{notes[1].title}</h2>
                     <div className='post-card-body'>
-                        <p>{notes[4].plainBody}
+                        <p>{notes[1].plainBody}
                         </p>
                     </div>
                     <div className="lower-card">
                         <div className='card-user'>
-                            <img className='profile-pic' src={`/images/${notes[4].username}.png`}></img>
-                            <p>@{notes[4].username}</p>
+                            <img className='profile-pic' src={`/images/${notes[1].username}.png`}></img>
+                            <p>@{notes[1].username}</p>
                         </div>
                         <div className="card-actions">
                             <img className='card-ico' src={likeIco} />

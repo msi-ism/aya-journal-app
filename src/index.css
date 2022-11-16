@@ -270,7 +270,7 @@ button:disabled, form:invalid button[type="submit"] {
   margin-bottom: 2%;
 }
 .home-cardcontainer > .post-card {
-  width: 30vw;
+  width: 40vw;
   height: auto;
   background-color: var(--tan-4);
   box-shadow: 10px 8px 10px 2px rgba(75, 0, 130, .2);
