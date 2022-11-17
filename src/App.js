@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {Route, Routes, Navigate} from 'react-router-dom'
 import {getUser} from './utilities/users-service'
 import AuthPage from './pages/AuthPage';
@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 function App() {
   const [user,  setUser] = useState(getUser())
 
+
   return (
     <main className="App">
       { user? (
@@ -30,8 +31,8 @@ function App() {
         <>
         <Routes> 
             <Route exact path='/' element={<HomePage setUser={setUser}/>} />
-            <Route exact path="/*" element={<Navigate exact to="/" />} />
             <Route exact path='/auth' element={<AuthPage setUser={setUser}/>} ></Route>
+            <Route exact path="/*" element={<Navigate exact to="/" />} />
         </Routes>
 
         {/* <AuthPage setUser={setUser} /> */}
