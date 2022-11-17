@@ -369,7 +369,7 @@ button:disabled, form:invalid button[type="submit"] {
 }
 .scroll-container > .feed-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 25px;
   width: 80vw;
   height: 85vh;

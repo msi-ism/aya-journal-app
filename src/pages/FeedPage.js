@@ -45,6 +45,7 @@ const FeedPage = ({ user }) => {
 
     }, [])
 
+
     console.log(notes)
 
     return (
@@ -67,7 +68,7 @@ const FeedPage = ({ user }) => {
                                     </div>
                                     <div className="lower-card">
                                         <div className='card-user'>
-                                            <img className='profile-pic' src={`/images/${note.username}.png`}></img>
+                                            <img className='profile-pic' src={ user.img? `/images/${note.username}.png` : `/images/account.png` }></img>
                                             <p>@{note.username}</p>
                                         </div>
                                         <div className="card-actions">
