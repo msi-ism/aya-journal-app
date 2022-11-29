@@ -10,4 +10,6 @@ router.get('/', notesCtrl.getAllNotes)
 
 router.post('/', notesCtrl.create)
 
+router.delete('/:id', notesCtrl.deleteNote)
+
 module.exports = router

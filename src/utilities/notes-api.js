@@ -12,6 +12,10 @@ export function getAllNotes() {
   console.log('here micheal')
   return sendRequest(`${BASE_URL}`, 'GET')
 }
+export function deleteNote(id) {
+  console.log('delete micheal')
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}
 
 // ^ Helper Functions
 

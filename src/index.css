@@ -307,8 +307,16 @@ button:disabled, form:invalid button[type="submit"] {
   border-radius: 20px;
   color: white;
   visibility: hidden;
+}
 
+.options-container > .del-btn {
+  color: red;
+  cursor: pointer;
+}
 
+.options-container > .edit-btn {
+  color: white;
+  cursor: pointer;
 }
 
 .lower-card > .card-user {

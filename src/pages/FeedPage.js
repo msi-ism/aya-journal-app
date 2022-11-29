@@ -10,6 +10,7 @@ import dotsIco from '../components/dots.png'
 import convertFromRaw from 'draft-js'
 import questionBank from "../data/Questions"
 import EditModal from "../components/EditModal";
+import { deleteNote } from "../utilities/notes-api";
 
 
 const questions = questionBank
@@ -41,7 +42,6 @@ const FeedPage = ({ user }) => {
     }
 
 
-
     const handleEdit = () => {
         console.log(notes)
         notes.map((note) => {
@@ -53,6 +53,13 @@ const FeedPage = ({ user }) => {
                 
             }
         })
+    }
+
+    const handleDelete = async (evt) => {
+        console.log(evt)
+        const notes = await deleteNote(evt)
+        console.log(notes)
+        setNotes(notes)
     }
 
     useEffect(() => {
@@ -96,7 +103,7 @@ const FeedPage = ({ user }) => {
                                         </div>
                                         <div id={note._id} className='options-container'>
                                             <h4 className="edit-btn">Edit</h4>
-                                            <h4 className="edit-btn">Delete</h4>
+                                            <h4 className="del-btn" onClick={() => handleDelete(note._id)}>Delete</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +114,7 @@ const FeedPage = ({ user }) => {
                     <PostCard notes={notes} />
                 }
             </div>
-            <JournalEntry user={user} />
+            <JournalEntry user={user} getNotes={getNotes} />
 
 
         </div>

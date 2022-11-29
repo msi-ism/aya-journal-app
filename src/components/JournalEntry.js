@@ -18,7 +18,7 @@ const closeWindow = () => {
 }
 
 
-const JournalEntry = ({user}) => {
+const JournalEntry = ({user, getNotes}) => {
     const [mode, setMode] = useState({})
     const [note, setNote] = useState({
         // notebook: '',
@@ -55,7 +55,9 @@ async function handleSubmit(evt) {
     create(noteData)
     console.log(noteData)
     closeWindow()
+    const notes = await getNotes()
     setMode('Share')
+    setNote(notes)
   } catch {
     setError('Error getting data');
   }

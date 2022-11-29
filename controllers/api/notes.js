@@ -4,7 +4,8 @@ const { trusted } = require('mongoose');
 
 module.exports = {
     create,
-    getAllNotes
+    getAllNotes,
+    deleteNote
   };
   
   async function create(req, res) {
@@ -36,4 +37,16 @@ module.exports = {
     }
   }
   
-  
+
+async function deleteNote(req, res) {
+  try{
+      console.log(req.params.id)
+      await Note.findByIdAndRemove(req.params.id)
+      const updatedNotes = await Note.find({})
+      res.json(updatedNotes)
+      
+  }catch(e){
+      console.log(e)
+      res.status(400).json({ msg: e.message });
+  }
+}
