@@ -40,12 +40,14 @@ const FeedPage = ({ user }) => {
         }
     }
 
+
+
     const handleEdit = () => {
         console.log(notes)
-        notes.forEach((note) => {
-            if (note.username === user.username) {
+        notes.map((note) => {
             let editModal = document.getElementById(`${note._id}`)
-            console.log(editModal)
+            if (note.username === user.username && note._id === editModal.id) {
+            console.dir(editModal)
             editModal.style.visibility = 'visible'
             } else {
                 
@@ -93,8 +95,8 @@ const FeedPage = ({ user }) => {
                                             <img className='card-ico' onClick={handleEdit} src={dotsIco} />
                                         </div>
                                         <div id={note._id} className='options-container'>
-                                            <h4>Edit</h4>
-                                            <h4>Delete</h4>
+                                            <h4 className="edit-btn">Edit</h4>
+                                            <h4 className="edit-btn">Delete</h4>
                                         </div>
                                     </div>
                                 </div>
