@@ -297,6 +297,20 @@ button:disabled, form:invalid button[type="submit"] {
   border-bottom-right-radius: 20px;
 }
 
+.lower-card > .options-container {
+  background-color: rgba(0, 0, 0, .4);
+  padding: 5px 10px 5px 10px;
+  position: absolute;
+  width: 100px;
+  right: 57px;
+  margin-top: 7px;
+  border-radius: 20px;
+  color: white;
+  visibility: hidden;
+
+
+}
+
 .lower-card > .card-user {
   display: inline-flex;
   gap: 7px;
@@ -365,6 +379,7 @@ button:disabled, form:invalid button[type="submit"] {
   position: absolute;
   z-index: 0;
   overflow-y: scroll;
+
   
 }
 .scroll-container > .feed-list {
@@ -378,6 +393,8 @@ button:disabled, form:invalid button[type="submit"] {
   position: fixed;
   z-index: 0;
   overflow-y: scroll;
+  padding-bottom: 5%;
+
 }
 
 .scroll-container > .feed-title{

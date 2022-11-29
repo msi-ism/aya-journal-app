@@ -6,8 +6,10 @@ import { useState, useEffect } from 'react'
 import likeIco from '../components/like.png'
 import commentIco from '../components/comment.png'
 import shareIco from '../components/send.png'
+import dotsIco from '../components/dots.png'
 import convertFromRaw from 'draft-js'
 import questionBank from "../data/Questions"
+import EditModal from "../components/EditModal";
 
 
 const questions = questionBank
@@ -19,12 +21,12 @@ const handleClick = () => {
 }
 
 
+
 const FeedPage = ({ user }) => {
     const [notes, setNotes] = useState()
 
     const getNotes = async () => {
         try {
-            console.log('got em')
             const data = await notesService.getAllNotes()
             console.log(data)
             setNotes(data)
@@ -38,9 +40,23 @@ const FeedPage = ({ user }) => {
         }
     }
 
+    const handleEdit = () => {
+        console.log(notes)
+        notes.forEach((note) => {
+            if (note.username === user.username) {
+            let editModal = document.getElementById(`${note._id}`)
+            console.log(editModal)
+            editModal.style.visibility = 'visible'
+            } else {
+                
+            }
+        })
+    }
+
     useEffect(() => {
         let journalCanvas = document.querySelector('.journal-container')
         journalCanvas.style.visibility = 'hidden'
+        let editModal = document.querySelectorAll('.options-container')
         getNotes()
 
     }, [])
@@ -68,13 +84,17 @@ const FeedPage = ({ user }) => {
                                     </div>
                                     <div className="lower-card">
                                         <div className='card-user'>
-                                            <img className='profile-pic' src={ user.img? `/images/${note.username}.png` : `/images/account.png` }></img>
+                                            <img className='profile-pic' src={user.img ? `/images/${note.username}.png` : `/images/account.png`}></img>
                                             <p>@{note.username}</p>
                                         </div>
                                         <div className="card-actions">
                                             <img className='card-ico' src={likeIco} />
                                             <img className='card-ico' src={commentIco} />
-                                            <img className='card-ico' src={shareIco} />
+                                            <img className='card-ico' onClick={handleEdit} src={dotsIco} />
+                                        </div>
+                                        <div id={note._id} className='options-container'>
+                                            <h4>Edit</h4>
+                                            <h4>Delete</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -86,6 +106,7 @@ const FeedPage = ({ user }) => {
                 }
             </div>
             <JournalEntry user={user} />
+
 
         </div>
     );
