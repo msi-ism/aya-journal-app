@@ -57,10 +57,11 @@ const FeedPage = ({ user }) => {
     }
 
     const clearModal = (evt) => {
-            let editModal = document.querySelector(`.options-container`)
-            console.dir(editModal)
-            editModal.style.visibility = 'hidden'
-    }
+        let editModal = document.getElementById('edit-modal-box')
+        console.dir(editModal)
+        editModal.style.visibility = 'hidden'
+        console.log('hidden completed')
+}
 
     const handleDelete = async (evt) => {
         console.log(evt)
@@ -77,7 +78,7 @@ const FeedPage = ({ user }) => {
         // setNotes(notes)
     }
 
-    document.body.addEventListener('click', clearModal, true);
+    document.body.addEventListener('click', clearModal);
 
 
 
@@ -88,8 +89,6 @@ const FeedPage = ({ user }) => {
 
     }, [])
 
-
-    console.log(notes)
 
 
     return (
@@ -118,9 +117,9 @@ const FeedPage = ({ user }) => {
                                         <div className="card-actions">
                                             <img className='card-ico' src={likeIco} />
                                             <img className='card-ico' src={commentIco} />
-                                            <img id={note._id} className='card-ico' onClick={handleEditModal} src={dotsIco} />
+                                            { note.username === user.username ? <img id={note._id} className='card-ico' onClick={handleEditModal} src={dotsIco} />  :  null }
                                         </div>
-                                        <div className='options-container'>
+                                        <div id='edit-modal-box' className='options-container'>
                                             <h4 className="edit-btn" onClick={() => handleEdit(note._id)}>Edit</h4>
                                             <h4 className="del-btn" onClick={() => handleDelete(note._id)}>Delete</h4>
                                         </div>
