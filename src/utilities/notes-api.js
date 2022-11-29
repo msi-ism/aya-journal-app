@@ -17,6 +17,11 @@ export function deleteNote(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
 
+export function editNote(id, noteToUpdate) {
+  console.log('edit micheal')
+  return sendRequest(`${BASE_URL}/update/${id}`, 'PUT', noteToUpdate)
+}
+
 // ^ Helper Functions
 
 async function sendRequest(url, method = 'GET', payload = null) {

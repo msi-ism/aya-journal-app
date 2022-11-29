@@ -5,7 +5,8 @@ const { trusted } = require('mongoose');
 module.exports = {
     create,
     getAllNotes,
-    deleteNote
+    deleteNote,
+    editNote
   };
   
   async function create(req, res) {
@@ -50,3 +51,17 @@ async function deleteNote(req, res) {
       res.status(400).json({ msg: e.message });
   }
 }
+
+async function editNote(req, res) {
+  console.log(req.body)
+  try{
+      const note = await Note.findByIdAndUpdate(req.params.id, req.body, { returnDocument: "after" }
+      )
+      const updatedNotes = await Note.find({})
+      res.status(200).json(updatedNotes)
+  }catch(e){
+      console.log(e)
+      res.status(400).json({ msg: e.message });
+  }
+  
+  }

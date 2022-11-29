@@ -10,7 +10,8 @@ import dotsIco from '../components/dots.png'
 import convertFromRaw from 'draft-js'
 import questionBank from "../data/Questions"
 import EditModal from "../components/EditModal";
-import { deleteNote } from "../utilities/notes-api";
+import { deleteNote, editNote } from "../utilities/notes-api";
+
 
 
 const questions = questionBank
@@ -20,8 +21,6 @@ const handleClick = () => {
     let journalCanvas = document.querySelector('.journal-container')
     journalCanvas.style.visibility = 'visible'
 }
-
-
 
 const FeedPage = ({ user }) => {
     const [notes, setNotes] = useState()
@@ -41,30 +40,26 @@ const FeedPage = ({ user }) => {
         }
     }
 
-
-    const handleEdit = () => {
-        console.log(notes)
-        notes.map((note) => {
-            let editModal = document.getElementById(`${note._id}`)
-            if (note.username === user.username && note._id === editModal.id) {
-            console.dir(editModal)
-            editModal.style.visibility = 'visible'
+    const handleEditModal = (evt) => {
+        console.log(evt.target.id)
+        let editModal = document.querySelectorAll(`.options-container`)
+        notes.map((note, idx) => {
+            if (note.username === user.username && note._id === evt.target.id) {
+                console.log(note._id)
+                console.log(evt.target.id)
+                console.dir(editModal)
+                console.log('true')
+                editModal[idx].style.visibility = 'visible'
             } else {
                 
             }
         })
     }
 
-    const clearModal = () => {
-        notes.map((note) => {
-            let editModal = document.getElementById(`${note._id}`)
-            if (note.username === user.username && note._id === editModal.id) {
+    const clearModal = (evt) => {
+            let editModal = document.querySelector(`.options-container`)
             console.dir(editModal)
             editModal.style.visibility = 'hidden'
-            } else {
-                
-            }
-        })
     }
 
     const handleDelete = async (evt) => {
@@ -74,20 +69,28 @@ const FeedPage = ({ user }) => {
         clearModal()
         setNotes(notes)
     }
+    const handleEdit = async (evt) => {
+        handleClick()
+        const notes = await editNote(evt)
+        // console.log(notes)
+        // clearModal()
+        // setNotes(notes)
+    }
 
-    document.body.addEventListener('mousedown', clearModal, true)
+    document.body.addEventListener('click', clearModal, true);
+
+
 
     useEffect(() => {
         let journalCanvas = document.querySelector('.journal-container')
         journalCanvas.style.visibility = 'hidden'
-        let editModal = document.querySelectorAll('.options-container')
-
         getNotes()
 
     }, [])
 
 
     console.log(notes)
+
 
     return (
         <div className='feed-container'>
@@ -115,10 +118,10 @@ const FeedPage = ({ user }) => {
                                         <div className="card-actions">
                                             <img className='card-ico' src={likeIco} />
                                             <img className='card-ico' src={commentIco} />
-                                            <img className='card-ico' onClick={handleEdit} src={dotsIco} />
+                                            <img id={note._id} className='card-ico' onClick={handleEditModal} src={dotsIco} />
                                         </div>
-                                        <div id={note._id} className='options-container'>
-                                            <h4 className="edit-btn">Edit</h4>
+                                        <div className='options-container'>
+                                            <h4 className="edit-btn" onClick={() => handleEdit(note._id)}>Edit</h4>
                                             <h4 className="del-btn" onClick={() => handleDelete(note._id)}>Delete</h4>
                                         </div>
                                     </div>
@@ -130,7 +133,7 @@ const FeedPage = ({ user }) => {
                     <PostCard notes={notes} />
                 }
             </div>
-            <JournalEntry user={user} getNotes={getNotes} />
+            <JournalEntry user={user} getNotes={getNotes} notes={notes} />
 
 
         </div>
