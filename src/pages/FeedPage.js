@@ -55,17 +55,33 @@ const FeedPage = ({ user }) => {
         })
     }
 
+    const clearModal = () => {
+        notes.map((note) => {
+            let editModal = document.getElementById(`${note._id}`)
+            if (note.username === user.username && note._id === editModal.id) {
+            console.dir(editModal)
+            editModal.style.visibility = 'hidden'
+            } else {
+                
+            }
+        })
+    }
+
     const handleDelete = async (evt) => {
         console.log(evt)
         const notes = await deleteNote(evt)
         console.log(notes)
+        clearModal()
         setNotes(notes)
     }
+
+    document.body.addEventListener('mousedown', clearModal, true)
 
     useEffect(() => {
         let journalCanvas = document.querySelector('.journal-container')
         journalCanvas.style.visibility = 'hidden'
         let editModal = document.querySelectorAll('.options-container')
+
         getNotes()
 
     }, [])
