@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function checkToken(req, res) {
-  // ^ req.user will always be there for you when a token is sent
+  // ^ req.user will always be there when a token is sent
   console.log('req.user', req.user)
   res.json(req.exp)
 }
@@ -47,9 +47,9 @@ async function login(req, res) {
     // ^ 
     const user = await User.findOne({email: req.body.email})
     console.log(user)
-    if (!user) throw new Error('Nope')
+    if (!user) throw new Error('No user')
     const decodedPassword = await bcrypt.compare(req.body.password, user.password)
-    if (!decodedPassword) throw new Error('Nope') 
+    if (!decodedPassword) throw new Error('Bad Password') 
     const token = createJWT(user)
     res.json(token)
 
@@ -61,12 +61,3 @@ async function login(req, res) {
 
 
 
-
-// Baby step...
-//   res.json({
-//     user: {
-//       name: req.body.name,
-//       email: req.body.email
-//     }
-//   });
-// }
