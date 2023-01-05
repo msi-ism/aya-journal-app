@@ -67,18 +67,18 @@ const HomePage = ({ user }) => {
                             <p>@{notes[1].username}</p>
                         </div>
                         <div className="card-actions">
-                            <img className='card-ico' src={likeIco} />
-                            <img className='card-ico' src={commentIco} />
-                            <img className='card-ico' src={shareIco} />
+                            <img alt='heart icon' className='card-ico' src={likeIco} />
+                            <img alt='comment icon'className='card-ico' src={commentIco} />
+                            <img alt='share icon' className='card-ico' src={shareIco} />
                         </div>
                     </div>
                 </div>
-                <h2><Link to='/auth'>SignUp</Link> to create your personal reflection journal today. <br /><br />Let's <span className='magic-word'>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
+                <h2>Let's <span className=''>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
+                <h2>Please <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=msism720@gmail.com" target="_blank">contact me</a> if you would like a demo of the app before it's public release or if you would like to contribute to it's development!</h2>
             </div>
             ) : (
                 <div>Loading</div>
             )}
-            <Footer />
         </div>
     );
 }
