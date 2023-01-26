@@ -32,9 +32,10 @@ function handleChange(evt) {
   setNote({ ...note, [evt.target.name]: evt.target.value });
   setError('');
 }
-    const [body, setBody] = useState('')
-    const [plainBody, setPlainBody] = useState('')
-    const [question, setQuestion] = useState('')
+
+const [body, setBody] = useState('')
+const [plainBody, setPlainBody] = useState('')
+const [question, setQuestion] = useState('')
 
 async function handleSubmit(evt) {
   // Prevent form from being submitted to the server
