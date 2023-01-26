@@ -74,7 +74,7 @@ const HomePage = ({ user }) => {
                     </div>
                 </div>
                 <h2>Let's <span className=''>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
-                <h4>Please <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=msism720@gmail.com" target="_blank">contact me</a> if you would like a demo of the app before it's public release or if you would like to contribute to it's development!</h4>
+                <p>Please <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=msism720@gmail.com" target="_blank">contact me</a> if you would like a demo of the app before it's public release or if you would like to contribute to its development!</p>
             </div>
             ) : (
                 <div>Loading</div>
