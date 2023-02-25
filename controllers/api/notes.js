@@ -6,7 +6,7 @@ module.exports = {
     create,
     getAllNotes,
     deleteNote,
-    editNote
+    editNote,
   };
   
   async function create(req, res) {
@@ -22,14 +22,12 @@ module.exports = {
       res.status(400).json(error)
     }
   }
-  
 
   async function getAllNotes(req, res) {
     try {
       // ^ 
       const allNotes = await Note.find({})
       const data = res.json(allNotes)
-      console.log("heres' your " + allNotes)
       if (!allNotes) throw new Error('Nope')
       return data
     } catch (error) {
@@ -37,7 +35,19 @@ module.exports = {
       
     }
   }
-  
+
+  // async function getUsersNotes(req, re, username) {
+  //   try {
+  //     // ^ 
+  //     const usersNotes = await Note.find({username: username})
+  //     const data = res.json(usersNotes)
+  //     if (!usersNotes) throw new Error('Nope')
+  //     return data
+  //   } catch (error) {
+  //     res.status(400).json("Can't get notes")
+      
+  //   }
+  // }
 
 async function deleteNote(req, res) {
   try{

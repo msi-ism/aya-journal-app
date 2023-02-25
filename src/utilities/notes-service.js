@@ -15,4 +15,11 @@ export async function create(noteData) {
     return data
 
   }
+  // export async function getUsersNotes() {
+  //   console.log('working')
+  //   const data = await notesAPI.getUsersNotes()
+  //   console.log(data)
+  //   return data
+
+  // }
 

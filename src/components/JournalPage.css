@@ -1,0 +1,38 @@
+body {
+    background-color: white !important;
+}
+
+
+.create-new-entry-div {
+    height: auto;
+    width: 100%;
+}
+.create-new-entry-div > .create-new-entry-btn{
+    border: solid 1px black;
+    height: 30px;
+    width: 150px;
+    background-color: white;
+    color: black;
+    margin: 10px;
+    cursor: pointer;
+    align-self: right;
+}
+
+.notebook-container > .journals-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.journals-list > .journal-entry {
+    width: 300px;
+    height: 500px;
+    background-color: white;
+}
+
+.journal-user > .profile-pic {
+    max-height: 50px;
+    border-radius: 20px;
+  }

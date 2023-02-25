@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react"
 import xIco from './x.png'
-import TextEditor from "./TextEditor"
+import TextEditorDemo from "./TextEditorDemo"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
 import {create} from '../utilities/notes-service'
 import QuestionSelector from "./QuestionSelector"
-import './JournalEntry.css'
+import './JournalEntryDemo.css'
 
 const questions = questionBank
 
 let privatePost = false
-
 let switchText = ''
+
+
 
 const closeWindow = () => {
     let journalCanvas = document.querySelector('.journal-container')
@@ -19,51 +20,19 @@ const closeWindow = () => {
 }
 
 
-const JournalEntry = ({user, getNotes}) => {
+const JournalEntryDemo = ({user, getNotes}) => {
     const [mode, setMode] = useState({})
-    const [note, setNote] = useState({
-        // notebook: '',
-        title: '',
-        body: ''
-    })
-
     const [error, setError] = useState('');
+    const [focus, setFocus] = useState(0)
 
 function handleChange(evt) {
-  setNote({ ...note, [evt.target.name]: evt.target.value });
   setError('');
 }
 
-const [body, setBody] = useState('')
-const [plainBody, setPlainBody] = useState('')
+// const [body, setBody] = useState('')
+// const [plainBody, setPlainBody] = useState('')
 const [question, setQuestion] = useState('')
 
-async function handleSubmit(evt) {
-  // Prevent form from being submitted to the server
-  evt.preventDefault();
-  try {
-    console.log('button working')
-    console.log(body)
-    let notebook = `${user.username}'s Notebook`
-    const noteData = {
-        author: user.name,
-        username: user.username,
-        notebook: notebook,
-        title: question,
-        body: body,
-        plainBody: plainBody,
-        public: privatePost ? false : true
-    }
-    create(noteData)
-    console.log(noteData)
-    closeWindow()
-    const notes = await getNotes()
-    setMode('Share')
-    setNote(notes)
-  } catch {
-    setError('Error getting data');
-  }
-}
     const publicMode = () => {
         let privacyBtn = document.querySelector('.privacy-btn')
         let inputText = document.querySelector('.input-text')
@@ -105,50 +74,76 @@ async function handleSubmit(evt) {
         }
     }
 
-
-
     useEffect(() => {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.submit-btn')
         publicMode()
-    }, [])
+        let textBox = document.querySelector('.public-DraftStyleDefault-block')
+        let textContainer = document.querySelector('.public-DraftEditorPlaceholder-root')
+        let tickComplete = false
+        const checkComplete = () => {
+            tickComplete = true
+        }
+        const animateTextBox = () => {
+            textContainer.textContent = ''
+            let displayText = 'Growing up without my parents gave me a bit of a superhero complex...'
+            let splitText = Array.from(displayText)
+            console.log(splitText)
+            for (let i = 0; i < splitText.length; i++) {
+                textBox.innerHTML += `<span class='split'>${splitText[i]}</span>`
+            }
+            const onTick = () => {
+                const span = textBox.querySelectorAll('.split')[char]
+                span.classList.add('fade')
+                char++
+                if (char === splitText.length) {
+                    // ^ if char length is equal to the length of the split text array, run complete function which stops
+                    complete()
+                    return
+                }
+            }
+            let char = 0
+            // ^ Setting an interval that runs onTick every .5 secs - below is where onTick is being called
+            let timer = setInterval(onTick, 50)
+            let tickLength = 1750
+            const complete = () => {
+                // ^ Timeout function that runs "checkComplete" after the ticklength
+                setTimeout(checkComplete, tickLength)
+                clearInterval(timer)
+                timer = null;
+            }
+        }    
+        const timeout = setTimeout(() => {
+          animateTextBox()
+        }, 2000)  
+        return () => clearTimeout(timeout)
 
+    }, [focus])
 
+    console.log(focus)
 
     return (
-        <div className='journal-container'>
-            <div className='journal-canvas' onSubmit={handleSubmit}>
+        <div className='journal-demo-container'>
+            <div className='journal-demo-canvas'>
                 <div className='upper-canvas'>
-                    <div className="entry-pic">
-                        <img className='profile-pic' src={`/images/${user.username}.png`}></img>
-                        <p >{user.username}</p>
+                    <div className="entry-pic-demo">
+                        <img className='profile-pic-demo' src={`/images/bigBruce.png`}></img>
+                        <p >@bigBruce</p>
                     </div>
-                    <div className='canvas-title'>
+                    <div className='canvas-title-demo'>
                         <QuestionSelector setQuestion={setQuestion}/>
                     </div>
-                    <div className='canvas-exit' onClick={closeWindow}>
-                        <img className='x-btn' src={xIco}></img>
-                    </div>
                 </div>
-                <div className='body-canvas'>
-                    <form onSubmit={handleSubmit}>
-                        <input type='hidden' name='author' value={user.name}></input>
-                        <input type='hidden' name='username' value={user.username}></input>
-                        <input type='hidden' name="notebook" default={'default-tesst'}></input>
-                        <input type='hidden' name='title' value={question}></input>
-                        <input type='hidden' name='body' value={body}></input>
-                        <input type='hidden' name='plainBody' value={plainBody}></input>
-                        <input type='hidden' name='likes' value={0}></input>
-                        <input type='hidden' name='public' value={privatePost ? true : false}></input>
-                    </form>
+                <div className='body-canvas' >
+                   
                     {/* <textarea placeholder="What's on your mind?"></textarea> */}
-                    <TextEditor {...{setBody, handleSubmit, setPlainBody}} />
+                    <TextEditorDemo setFocus={setFocus} focus={focus}/>
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
                         {'Switch Privacy:'}
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='submit-btn' type='submit' onClick={handleSubmit}></button>
+                        <button className='submit-btn' type='submit' ></button>
                     </div>
                 </div>
 
@@ -157,5 +152,4 @@ async function handleSubmit(evt) {
         </div>
     );
 }
-
-export default JournalEntry;
+export default JournalEntryDemo;

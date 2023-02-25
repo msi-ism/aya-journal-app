@@ -12,7 +12,7 @@ import underlineIco from './icons/underline-text.png'
 
 
 
-class TextEditor extends React.Component {
+class TextEditorDemo extends React.Component {
     constructor(props) {
       super(props);
       this.state = {editorState: EditorState.createEmpty()};
@@ -79,14 +79,21 @@ class TextEditor extends React.Component {
         }
       }
 
+      let reload = () => {
+        if (this.props.focus < 1) { 
+            this.props.setFocus(1)
+             
+        }
+
+      }
+
 
       let noteBody = editorState.getCurrentContent()
       let jsonBody = JSON.stringify(convertToRaw(contentState))
       let plainJSONBody = noteBody.getPlainText()
+
       // console.log(noteBody.getPlainText())
       // console.log(jsonBody)
-      this.props.setBody(jsonBody)
-      this.props.setPlainBody(plainJSONBody)
 
       return (
         <div className="RichEditor-root">
@@ -113,7 +120,7 @@ class TextEditor extends React.Component {
               // ^ Below line of code causing 'ref string' bug. Need to figure out why.
               ref="editor"
               spellCheck={true}
-   
+              onFocus={console.log(editorState)} 
             />
             <button className='editor-submit-btn' type='submit' label='Submit'>Submit</button>
           </div>
@@ -226,4 +233,4 @@ class TextEditor extends React.Component {
     );
   };
 
-export default TextEditor;
+export default TextEditorDemo;

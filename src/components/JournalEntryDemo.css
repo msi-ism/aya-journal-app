@@ -1,0 +1,161 @@
+:root {
+    --white: #FFFFFF;
+    --tan-1: #FBF9F6;
+    --tan-2: #E7E2DD;
+    --tan-3: #E2D9D1;
+    --tan-4: #D3C1AE;
+    --purple-1: #9F73AB;
+    --blue-1: #A3C7D6;
+    --green-1: #ADCF9F;
+    --orange: #F67F00;
+    --darkgreen:#2F4858;
+    --darkblue: #384F71;
+    --purple-2: #575184;
+    --purple-3: #824C88;
+    --soremauve: #AC437C;
+    --red: #CC3F60;
+    --text-light: #968c84;
+    --text-dark: #615954;
+    --font-nav: 'Helvetica';
+    --font-header: 'Rubik';
+  
+  }
+
+.main-container > .home-demo-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+  .home-demo-container > .journal-demo-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 8px 28px 25px rgba(0, 0, 0, .3);
+    border-radius: 20px;
+
+
+  }
+  .journal-demo-container > .journal-demo-canvas {
+    height: auto;
+    width: 60vw;
+    background-color: var(--tan-4);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+  }
+  
+  .journal-demo-canvas > .upper-canvas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    min-height: 115px;
+    background-color: var(--purple-3);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  
+  .upper-canvas > .entry-pic-demo {
+    position: absolute;
+    margin-top: 1%;
+    color: white;
+    font-size: 12px;
+    margin-left: -50%;
+  }
+
+  .entry-pic-demo > .profile-pic-demo {
+    max-width: 60px;
+    border-radius: 100%;
+    height: auto;
+
+  }
+  .upper-canvas > .canvas-title-demo {
+    white-space: wrap;
+    color: white;
+    font-size: .5vw;
+    width: auto;
+    height: 100%;
+  }
+  
+  .question-selector {
+    height: auto;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, .2);
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    border: 3px solid grey;
+  }
+  
+  
+  .journal-demo-canvas > .body-canvas {
+    height: 100%;
+    width: 100%;
+    color: black !important;
+    background-color: pink;
+    pointer-events: none;
+  }
+  
+  
+  .journal-demo-canvas > .lower-canvas {
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    pointer-events: none;
+  
+  }
+  
+  .lower-canvas > .privacy-btn {
+    background-color: var(--purple-1);
+    width: 85px;
+  }
+  
+  
+  .lower-canvas > .submit-btn {
+    background-color: var(--green-1);
+    width: 85px;
+  }
+  
+  .body-canvas > textarea {
+    height: 370px;
+    width: 80%;
+    resize: none;
+    border: 2px solid var(--purple-3);
+    padding: 10px;
+    margin: 20px;
+  }
+  
+  .upper-canvas > .canvas-exit {
+    width: auto;
+    height: auto;
+    margin-left: 54%;
+    margin-bottom: 3%;
+    cursor: pointer;
+    border-radius: 100%;
+    text-align: center;
+    padding: 2px;
+  }
+  
+  .canvas-exit > .x-btn {
+    width: 15px;
+    height: auto;
+  }
+  
+.split {
+    opacity: 0;
+    transition: all 0.7s step-end;
+}
+  
+.split.fade {
+    opacity: 1;
+}
