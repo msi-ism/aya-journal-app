@@ -90,8 +90,8 @@ const JournalPage = ({ user }) => {
     return (
         <div className='page-container'>
             <h1>My Journals</h1>
-            <div className='create-new-entry-div' onClick={handleClick}>
-                    <button className='create-new-entry-btn'>Create New Entry</button>
+            <div className='create-new-entry-div'>
+                    <button onClick={handleClick} className='create-new-entry-btn'>Create New Entry</button>
                 </div>
             <div className="notebook-container">
                 {notes ?

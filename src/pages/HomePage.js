@@ -36,16 +36,6 @@ const HomePage = ({ user }) => {
 
     useEffect(() => {
         setDisplay('Growing up without parents is tough.')
-        // const interval = setInterval(() => {
-        //     for (let i = 0; i < verbs.length; i++) {
-        //         let randomVerb = verbs[Math.floor(Math.random() * verbs.length)]
-        //         setVerb((verb) => randomVerb)
-        //     }
-
-        // }, 1500)
-        // // ^ Above all, when using setInterval, it is imperative that you clear the scheduled interval once the component unmounts.
-        // return () => clearInterval(interval)
-
     }, [])
 
     return (
@@ -54,13 +44,9 @@ const HomePage = ({ user }) => {
                 <h1 className='header-title'>Welcome to the As You Are app!</h1>
                 <h2>A place to get to<span className='magic-word'> know</span> yourself.</h2>
             </div>
-            {notes ? (
                 <div className="home-demo-container">
                     <JournalEntryDemo display={display}/>
                 </div>
-            ) : (
-                <div>Loading</div>
-            )}
             <h2>Let's <span className=''>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
             <p>Please <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=msism720@gmail.com" target="_blank">contact me</a> if you would like a demo of the app before it's public release or if you would like to contribute to its development!</p>
         </div>
