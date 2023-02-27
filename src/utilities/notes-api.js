@@ -13,10 +13,10 @@ export function getAllNotes() {
   return sendRequest(`${BASE_URL}`, 'GET')
 }
 
-// export function getUsersNotes(user) {
-//   console.log('here micheal')
-//   return sendRequest(`${BASE_URL}/${user}`, 'GET')
-// }
+export function getUsersNotes(loggedInUser) {
+  console.log('here micheal')
+  return sendRequest(`${BASE_URL}/${loggedInUser}`, 'GET')
+}
 
 
 export function deleteNote(id) {
@@ -40,7 +40,7 @@ async function sendRequest(url, method = 'GET', payload = null) {
         options.headers = { 'Content-Type': 'application/json' }
         options.body = JSON.stringify(payload);
         options.headers = options.headers || {}
-        // console.log(payload)
+        console.log(payload)
       }
     // ^ res.ok will be false if the status code set to 4xx in the controller action
     const res = await fetch(url, options);

@@ -21,15 +21,14 @@ const handleClick = () => {
 
 const JournalPage = ({ user }) => {
     const [notes, setNotes] = useState()
+    const loggedInUser = user.username
 
     const getNotes = async () => {
         try {
-            const data = await notesService.getAllNotes()
+            const data = await notesService.getUsersNotes(loggedInUser)
             console.log(data)
             setNotes(data)
             console.log('got notes')
-            // ^ using Signup from users-service on formData collected here
-
         } catch (error) {
             // ^ if we have an error
             console.log(error)
@@ -52,6 +51,9 @@ const JournalPage = ({ user }) => {
             }
         })
     }
+
+
+
 
     const clearModal = (evt) => {
         let editModal = document.getElementById('edit-modal-box')
@@ -94,7 +96,7 @@ const JournalPage = ({ user }) => {
             <div className="notebook-container">
                 {notes ?
                     <ul className='journals-list'>
-                        {notes.map((note, idx) => (
+                        {notes.flatMap((note, idx) => (
                             <li key={idx} className='journal-entry'>
                                 <div className="entry-header">
                                     <h2 className='entry-title'>{note.title}</h2>
