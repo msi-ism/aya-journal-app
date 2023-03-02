@@ -36,21 +36,21 @@ const JournalPage = ({ user }) => {
         }
     }
 
-    const handleEditModal = (evt) => {
-        console.log(evt.target.id)
-        let editModal = document.querySelectorAll(`.options-container`)
-        notes.map((note, idx) => {
-            if (note.username === user.username && note._id === evt.target.id) {
-                console.log(note._id)
-                console.log(evt.target.id)
-                console.dir(editModal)
-                console.log('true')
-                editModal[idx].style.visibility = 'visible'
-            } else {
+    // const handleEditModal = (evt) => {
+    //     console.log(evt.target.id)
+    //     let editModal = document.querySelectorAll(`.options-container`)
+    //     notes.map((note, idx) => {
+    //         if (note.username === user.username && note._id === evt.target.id) {
+    //             console.log(note._id)
+    //             console.log(evt.target.id)
+    //             console.dir(editModal)
+    //             console.log('true')
+    //             editModal[idx].style.visibility = 'visible'
+    //         } else {
 
-            }
-        })
-    }
+    //         }
+    //     })
+    // }
 
 
 
@@ -66,7 +66,6 @@ const JournalPage = ({ user }) => {
         console.log(evt)
         const notes = await deleteNote(evt)
         console.log(notes)
-        clearModal()
         setNotes(notes)
     }
     const handleEdit = async (evt) => {
@@ -77,20 +76,19 @@ const JournalPage = ({ user }) => {
         // setNotes(notes)
     }
 
-    document.body.addEventListener('click', clearModal);
+    // document.body.addEventListener('click', clearModal);
 
 
 
     useEffect(() => {
-        let journalCanvas = document.querySelector('.journal-container')
-        journalCanvas.style.visibility = 'hidden'
+
         getNotes()
 
     }, [])
     return (
         <div className='page-container'>
-            <h1>My Journals</h1>
             <div className='create-new-entry-div'>
+            <h1 className='journal-page-header'>My Journals</h1>
                     <button onClick={handleClick} className='create-new-entry-btn'>Create New Entry</button>
                 </div>
             <div className="notebook-container">
@@ -100,24 +98,24 @@ const JournalPage = ({ user }) => {
                             <li key={idx} className='journal-entry'>
                                 <div className="entry-header">
                                     <h2 className='entry-title'>{note.title}</h2>
-                                    <div className='entry-body'>
+                                </div>
+                                <div className='entry-body'>
                                         <p>{note.plainBody}
                                         </p>
-                                    </div>
-                                    <div className="entry-lower">
-                                        <div className='journal-user'>
-                                            <img className='profile-pic' src={user.img ? `/images/${note.username}.png` : `/images/account.png`}></img>
-                                            <p>@{note.username}</p>
+                                </div>
+                                <div className="entry-lower">
+                                    <div className='journal-user'>
+                                        <img className='profile-pic' src={user.img ? `/images/${note.username}.png` : `/images/account.png`}></img>
+                                        <p>@{note.username}</p>
                                         </div>
-                                        <div className="card-actions">
-                                            <img className='card-ico' src={likeIco} />
-                                            <img className='card-ico' src={commentIco} />
-                                            {note.username === user.username ? <img id={note._id} className='card-ico' onClick={handleEditModal} src={dotsIco} /> : null}
-                                        </div>
-                                        <div id='edit-modal-box' className='options-container'>
-                                            <h4 className="edit-btn" onClick={() => handleEdit(note._id)}>Edit</h4>
-                                            <h4 className="del-btn" onClick={() => handleDelete(note._id)}>Delete</h4>
-                                        </div>
+                                    {/* <div className="card-actions">
+                                        <img className='card-ico' src={likeIco} />
+                                        <img className='card-ico' src={commentIco} />
+                                        {note.username === user.username ? <img id={note._id} className='card-ico' onClick={handleEditModal} src={dotsIco} /> : null}
+                                    </div> */}
+                                    <div id='edit-modal-box' className='options-container'>
+                                        <h4 className="edit-btn" onClick={() => handleEdit(note._id)}>Edit</h4>
+                                        <h4 className="del-btn" onClick={() => handleDelete(note._id)}>Delete</h4>
                                     </div>
                                 </div>
                             </li>

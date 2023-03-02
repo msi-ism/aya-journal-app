@@ -57,7 +57,7 @@ body {
 
 .header > .header-title {
   color: white;
-  text-shadow: 0 0 3px #000000;;
+  text-shadow: 0 0 3px #000000;
 }
 
 code {
@@ -79,6 +79,10 @@ h1 {
   font-family: var(--font-header);
   font-weight: 600;
   font-size: 3em;
+}
+
+h2 {
+  margin: 0;
 }
 
 li {
@@ -496,3 +500,9 @@ button:disabled, form:invalid button[type="submit"] {
   height: 50px;
 }
 
+.aya-header {
+  /* background-image: -webkit-linear-gradient(-45deg, rgba(225, 230, 53, 0.863) 20%, rgb(214, 205, 45) 56%, rgb(253, 187, 45) 100%); */
+  color:rgb(225, 69, 69)
+
+
+}

@@ -41,14 +41,13 @@ const HomePage = ({ user }) => {
     return (
         <div className="main-container">
             <div className="header">
-                <h1 className='header-title'>Welcome to the As You Are app!</h1>
+                <h1 className='header-title'>Welcome to the <span className='aya-header'>As You Are</span> journal app!</h1>
                 <h2>A place to get to<span className='magic-word'> know</span> yourself.</h2>
             </div>
                 <div className="home-demo-container">
                     <JournalEntryDemo display={display}/>
                 </div>
-            <h2>Let's <span className=''>discover</span> ourselves, <span className='highlight-word'>together.</span></h2>
-            <p>Please <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=msism720@gmail.com" target="_blank">contact me</a> if you would like a demo of the app before it's public release or if you would like to contribute to its development!</p>
+            {/* <h2>Let's discover ourselves, <span className='highlight-word'>together.</span></h2> */}
         </div>
     );
 }

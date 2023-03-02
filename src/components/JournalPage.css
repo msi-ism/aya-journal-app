@@ -2,20 +2,54 @@ body {
     background-color: white !important;
 }
 
+:root {
+    --white: #FFFFFF;
+    --tan-1: #FBF9F6;
+    --tan-2: #E7E2DD;
+    --tan-3: #E2D9D1;
+    --tan-4: #D3C1AE;
+    --purple-1: #9F73AB;
+    --blue-1: #A3C7D6;
+    --green-1: #ADCF9F;
+    --orange: #F67F00;
+    --darkgreen:#2F4858;
+    --darkblue: #384F71;
+    --purple-2: #575184;
+    --purple-3: #824C88;
+    --soremauve: #AC437C;
+    --red: #CC3F60;
+    --text-light: #968c84;
+    --text-dark: #615954;
+    --font-nav: 'Helvetica';
+    --font-header: 'Rubik';
+  
+  }
+
+
+.journal-page-header {
+    grid-column-start: 2;
+    color: white;
+}
+
+
 
 .create-new-entry-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     height: auto;
     width: 100%;
 }
 .create-new-entry-div > .create-new-entry-btn{
+    grid-column-start: 3;
     border: solid 1px black;
-    height: auto;
-    width: auto;
+    height: 40px;
+    width: 225px;
     background-color: white;
     color: black;
     padding: 10px;
     cursor: pointer;
-    align-self: right;
+    align-self: center;
+    justify-self: center;
 }
 
 .notebook-container > .journals-list{
@@ -24,17 +58,59 @@ body {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 20px;
+
 }
 
 .journals-list > .journal-entry {
-    width: 300px;
-    height: 500px;
+    display: grid;
+    grid-template-rows: .25fr 1fr .25fr;
+    width: 350px;
+    height: 550px;
     background-color: white;
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 20px;
+}
+
+.journal-entry > .entry-header {
+    height: 100%;
+    padding: 10px;
+    background-color: #9F73AB;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
+}
+.journal-entry > .entry-body {
+    height: 100%;
+    padding: 10px;
+
+}
+.journal-entry > .entry-lower {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--tan-4);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.entry-lower > .journal-user {
+
+}
+.entry-lower > .options-container {
+    grid-column-start: 3;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
 }
 
 .journal-user > .profile-pic {
-    max-height: 50px;
+    max-height: 40px;
     border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: -15px;
+    grid-column-start: 1;
   }
+
