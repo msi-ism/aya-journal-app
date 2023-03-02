@@ -113,7 +113,12 @@ body {
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-self: center;
+    justify-self: center;
+}
 
+.options-container > .del-btn, .edit-btn {
+    max-height: 25px;
 }
 
 .journal-user > .profile-pic {

@@ -12,6 +12,8 @@ import convertFromRaw from 'draft-js'
 import questionBank from "../data/Questions"
 import EditModal from "../components/EditModal";
 import { deleteNote, editNote } from "../utilities/notes-api";
+import editIco from '../components/edit.png'
+import trashIco from '../components/trash.png'
 
 const handleClick = () => {
     let journalCanvas = document.querySelector('.journal-container')
@@ -88,9 +90,9 @@ const JournalPage = ({ user }) => {
     return (
         <div className='page-container'>
             <div className='create-new-entry-div'>
-            <h1 className='journal-page-header'>My Journals</h1>
-                    <button onClick={handleClick} className='create-new-entry-btn'>Create New Entry</button>
-                </div>
+                <h1 className='journal-page-header'>My Journals</h1>
+                <button onClick={handleClick} className='create-new-entry-btn'>Create New Entry</button>
+            </div>
             <div className="notebook-container">
                 {notes ?
                     <ul className='journals-list'>
@@ -100,22 +102,17 @@ const JournalPage = ({ user }) => {
                                     <h2 className='entry-title'>{note.title}</h2>
                                 </div>
                                 <div className='entry-body'>
-                                        <p>{note.plainBody}
-                                        </p>
+                                    <p>{note.plainBody}
+                                    </p>
                                 </div>
                                 <div className="entry-lower">
                                     <div className='journal-user'>
                                         <img className='profile-pic' src={user.img ? `/images/${note.username}.png` : `/images/account.png`}></img>
                                         <p>@{note.username}</p>
-                                        </div>
-                                    {/* <div className="card-actions">
-                                        <img className='card-ico' src={likeIco} />
-                                        <img className='card-ico' src={commentIco} />
-                                        {note.username === user.username ? <img id={note._id} className='card-ico' onClick={handleEditModal} src={dotsIco} /> : null}
-                                    </div> */}
+                                    </div>
                                     <div id='edit-modal-box' className='options-container'>
-                                        <h4 className="edit-btn" onClick={() => handleEdit(note._id)}>Edit</h4>
-                                        <h4 className="del-btn" onClick={() => handleDelete(note._id)}>Delete</h4>
+                                        <img className="edit-btn" onClick={() => handleEdit(note._id)} src={editIco}></img>
+                                        <img className="del-btn" onClick={() => handleDelete(note._id)} src={trashIco}></img>
                                     </div>
                                 </div>
                             </li>
