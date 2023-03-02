@@ -64,7 +64,7 @@ body {
 .journals-list > .journal-entry {
     display: grid;
     grid-template-rows: .25fr 1fr .25fr;
-    width: 350px;
+    width: 375px;
     height: 550px;
     background-color: white;
     border-radius: 20px;
@@ -72,12 +72,22 @@ body {
 
 .journal-entry > .entry-header {
     height: 100%;
+    width: 100%;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #9F73AB;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    
 }
+
+.entry-header > .entry-title {
+    justify-self: center;
+    align-self: center;
+    color: white;
+}
+
 .journal-entry > .entry-body {
     height: 100%;
     padding: 10px;
