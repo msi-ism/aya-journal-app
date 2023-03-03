@@ -58,6 +58,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 20px;
+    margin-top: 50px;
 
 }
 
@@ -96,10 +97,10 @@ body {
 .journal-entry > .entry-lower {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr .05fr;
     height: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
+    padding: 0px;
+    margin: 0px;
     background-color: var(--tan-4);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -115,6 +116,14 @@ body {
     gap: 5px;
     align-self: center;
     justify-self: center;
+}
+
+.entry-lower > .time-stamp {
+    height: auto;
+    width: 100%;
+    font-size: 12px;
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 .options-container > .del-btn, .edit-btn {

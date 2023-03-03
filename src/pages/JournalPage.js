@@ -78,8 +78,14 @@ const JournalPage = ({ user }) => {
         // setNotes(notes)
     }
 
+
+
     // document.body.addEventListener('click', clearModal);
 
+    const convertDate = (dbDate) => {
+        let date = new Date(dbDate)
+        return date.toDateString('en-GB', {day: 'numeric', month: 'long', year:'numeric'})
+     }
 
 
     useEffect(() => {
@@ -113,6 +119,9 @@ const JournalPage = ({ user }) => {
                                     <div id='edit-modal-box' className='options-container'>
                                         <img className="edit-btn" onClick={() => handleEdit(note._id)} src={editIco}></img>
                                         <img className="del-btn" onClick={() => handleDelete(note._id)} src={trashIco}></img>
+                                    </div>
+                                    <div className='time-stamp'>
+                                        <p>{convertDate(note.created_at)}</p>
                                     </div>
                                 </div>
                             </li>
