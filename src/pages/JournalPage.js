@@ -14,9 +14,14 @@ import EditModal from "../components/EditModal";
 import { deleteNote, editNote } from "../utilities/notes-api";
 import editIco from '../components/edit.png'
 import trashIco from '../components/trash.png'
+import JournalEditModal from '../components/JournalEditModal';
 
 const handleClick = () => {
     let journalCanvas = document.querySelector('.journal-container')
+    journalCanvas.style.visibility = 'visible'
+}
+const handleEditClick = () => {
+    let journalCanvas = document.querySelector('.journal-edit-container')
     journalCanvas.style.visibility = 'visible'
 }
 
@@ -103,7 +108,7 @@ const JournalPage = ({ user }) => {
                 {notes ?
                     <ul className='journals-list'>
                         {notes.flatMap((note, idx) => (
-                            <li key={idx} className='journal-entry'>
+                            <li key={idx} className='journal-entry' onClick={handleEditClick}>
                                 <div className="entry-header">
                                     <h2 className='entry-title'>{note.title}</h2>
                                 </div>
@@ -132,6 +137,7 @@ const JournalPage = ({ user }) => {
                 }
             </div>
             <JournalEntry user={user} />
+            <JournalEditModal user={user} />
         </div>
     );
 }

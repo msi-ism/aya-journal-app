@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react"
 import xIco from './x.png'
 import TextEditor from "./TextEditor"
@@ -5,7 +6,7 @@ import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
 import {create} from '../utilities/notes-service'
 import QuestionSelector from "./QuestionSelector"
-import './JournalEntry.css'
+import './JournalEditModal.css'
 
 const questions = questionBank
 
@@ -14,12 +15,12 @@ let privatePost = false
 let switchText = ''
 
 const closeWindow = () => {
-    let journalCanvas = document.querySelector('.journal-container')
+    let journalCanvas = document.querySelector('.journal-edit-container')
     journalCanvas.style.visibility = 'hidden'
 }
 
 
-const JournalEntry = ({user, getNotes}) => {
+const JournalEditModal = ({user, getNotes}) => {
     const [mode, setMode] = useState({})
     const [note, setNote] = useState({
         // notebook: '',
@@ -106,17 +107,16 @@ async function handleSubmit(evt) {
     }
 
 
-
     useEffect(() => {
         let privacyBtn = document.querySelector('.privacy-btn')
-        let submitBtn = document.querySelector('.edit-submit-btn')
+        let submitBtn = document.querySelector('.submit-btn')
         publicMode()
     }, [])
 
 
 
     return (
-        <div className='journal-container'>
+        <div className='journal-edit-container'>
             <div className='journal-canvas' onSubmit={handleSubmit}>
                 <div className='upper-canvas'>
                     <div className="entry-pic">
@@ -141,14 +141,13 @@ async function handleSubmit(evt) {
                         <input type='hidden' name='likes' value={0}></input>
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
-                    {/* <textarea placeholder="What's on your mind?"></textarea> */}
                     <TextEditor {...{setBody, handleSubmit, setPlainBody}} />
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
                         {'Switch Privacy:'}
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='edit-submit-btn' type='submit' onClick={handleSubmit}></button>
+                        <button className='submit-btn' type='submit' onClick={handleSubmit}></button>
                     </div>
                 </div>
 
@@ -158,4 +157,4 @@ async function handleSubmit(evt) {
     );
 }
 
-export default JournalEntry;
+export default JournalEditModal;
