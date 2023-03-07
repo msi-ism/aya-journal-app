@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react"
 import xIco from './x.png'
-import TextEditor from "./TextEditor"
+import TextEditorEdit from "./TextEditorEdit"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
 import {create} from '../utilities/notes-service'
@@ -20,15 +20,13 @@ const closeWindow = () => {
 }
 
 
-const JournalEditModal = ({user, getNotes}) => {
+const JournalEditModal = ({user, getNotes, editNote}) => {
     const [mode, setMode] = useState({})
-    const [note, setNote] = useState({
-        // notebook: '',
-        title: '',
-        body: ''
-    })
+    const [note, setNote] = useState()
 
     const [error, setError] = useState('');
+
+    
 
 function handleChange(evt) {
   setNote({ ...note, [evt.target.name]: evt.target.value });
@@ -111,6 +109,7 @@ async function handleSubmit(evt) {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.submit-btn')
         publicMode()
+        // console.log(notes)
     }, [])
 
 
@@ -141,13 +140,14 @@ async function handleSubmit(evt) {
                         <input type='hidden' name='likes' value={0}></input>
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
-                    <TextEditor {...{setBody, handleSubmit, setPlainBody}} />
+                    <TextEditorEdit {...{setBody, handleSubmit, setPlainBody}} />
+
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
                         {'Switch Privacy:'}
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='submit-btn' type='submit' onClick={handleSubmit}></button>
+                        <button className='edit-submit-btn' type='submit' onClick={handleSubmit}></button>
                     </div>
                 </div>
 

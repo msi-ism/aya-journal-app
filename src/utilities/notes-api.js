@@ -24,9 +24,9 @@ export function deleteNote(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
 
-export function editNote(id, noteToUpdate) {
+export function editNote(id) {
   console.log('edit micheal')
-  return sendRequest(`${BASE_URL}/update/${id}`, 'PUT', noteToUpdate)
+  return sendRequest(`${BASE_URL}/update/${id}`, 'PUT')
 }
 
 // ^ Helper Functions

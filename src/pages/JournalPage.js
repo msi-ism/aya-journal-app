@@ -16,18 +16,11 @@ import editIco from '../components/edit.png'
 import trashIco from '../components/trash.png'
 import JournalEditModal from '../components/JournalEditModal';
 
-const handleClick = () => {
-    let journalCanvas = document.querySelector('.journal-container')
-    journalCanvas.style.visibility = 'visible'
-}
-const handleEditClick = () => {
-    let journalCanvas = document.querySelector('.journal-edit-container')
-    journalCanvas.style.visibility = 'visible'
-}
 
 
 const JournalPage = ({ user }) => {
     const [notes, setNotes] = useState()
+    const [highlight, setHighlight] = useState({})
     const loggedInUser = user.username
 
     const getNotes = async () => {
@@ -35,7 +28,7 @@ const JournalPage = ({ user }) => {
             const data = await notesService.getUsersNotes(loggedInUser)
             console.log(data)
             setNotes(data)
-            console.log('got notes')
+
         } catch (error) {
             // ^ if we have an error
             console.log(error)
@@ -43,23 +36,22 @@ const JournalPage = ({ user }) => {
         }
     }
 
-    // const handleEditModal = (evt) => {
-    //     console.log(evt.target.id)
-    //     let editModal = document.querySelectorAll(`.options-container`)
-    //     notes.map((note, idx) => {
-    //         if (note.username === user.username && note._id === evt.target.id) {
-    //             console.log(note._id)
-    //             console.log(evt.target.id)
-    //             console.dir(editModal)
-    //             console.log('true')
-    //             editModal[idx].style.visibility = 'visible'
-    //         } else {
-
-    //         }
-    //     })
-    // }
+    const handleClick = () => {
+        let journalCanvas = document.querySelector('.journal-container')
+        journalCanvas.style.visibility = 'visible'
+    }
 
 
+    let selectedNote = ''
+    const handleEditModal = (evt) => {
+        let journalCanvas = document.querySelector('.journal-edit-container')
+        journalCanvas.style.visibility = 'visible'
+        selectedNote = notes.filter(note => note._id.includes(evt))
+        console.log(evt)
+        setHighlight(selectedNote[0])
+
+    }
+    
 
 
     const clearModal = (evt) => {
@@ -73,16 +65,15 @@ const JournalPage = ({ user }) => {
         console.log(evt)
         const notes = await deleteNote(evt)
         console.log(notes)
-        setNotes(notes)
     }
     const handleEdit = async (evt) => {
-        handleClick()
-        const notes = await editNote(evt)
-        // console.log(notes)
-        // clearModal()
-        // setNotes(notes)
-    }
+        // console.log(highlight[0])
+        console.log(evt)
 
+        // handleEditModal()
+        // const notes = await editNote(evt)
+        // console.log(notes)
+    }
 
 
     // document.body.addEventListener('click', clearModal);
@@ -96,8 +87,10 @@ const JournalPage = ({ user }) => {
     useEffect(() => {
 
         getNotes()
+        console.log('selectedNote: ' + highlight.plainBody)
+        // console.log(notes)
 
-    }, [])
+    }, [highlight])
     return (
         <div className='page-container'>
             <div className='create-new-entry-div'>
@@ -108,11 +101,11 @@ const JournalPage = ({ user }) => {
                 {notes ?
                     <ul className='journals-list'>
                         {notes.flatMap((note, idx) => (
-                            <li key={idx} className='journal-entry' onClick={handleEditClick}>
-                                <div className="entry-header">
+                            <li key={idx} className='journal-entry'>
+                                <div className="entry-header" onClick={() => handleEditModal(note._id)}>
                                     <h2 className='entry-title'>{note.title}</h2>
                                 </div>
-                                <div className='entry-body'>
+                                <div className='entry-body' onClick={() => handleEditModal(note._id)}>
                                     <p>{note.plainBody}
                                     </p>
                                 </div>
@@ -137,7 +130,7 @@ const JournalPage = ({ user }) => {
                 }
             </div>
             <JournalEntry user={user} />
-            <JournalEditModal user={user} />
+            <JournalEditModal user={user} editNote={editNote} />
         </div>
     );
 }

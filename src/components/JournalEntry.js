@@ -148,7 +148,7 @@ async function handleSubmit(evt) {
                     <div className="submit-btns">
                         {'Switch Privacy:'}
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='edit-submit-btn' type='submit' onClick={handleSubmit}></button>
+                        <button className='submit-btn' type='submit' onClick={handleSubmit}></button>
                     </div>
                 </div>
 
