@@ -20,7 +20,7 @@ const closeWindow = () => {
 }
 
 
-const JournalEditModal = ({user, getNotes, highlight}) => {
+const JournalEditModal = ({user, getNotes, highlight, savedPlainBody}) => {
     const [mode, setMode] = useState({})
     const [note, setNote] = useState()
     const [textContent, setTextContent] = useState()
@@ -110,11 +110,8 @@ async function handleSubmit(evt) {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.submit-btn')
         let textBox = document.querySelector('.public-DraftStyleDefault-block')
-        textBox.textContent = 'whoopty doo'
-        console.log(textBox)
         publicMode()
-        console.log(plainBody)
-    }, [])
+    }, [savedPlainBody])
 
 
 
@@ -144,7 +141,7 @@ async function handleSubmit(evt) {
                         <input type='hidden' name='likes' value={0}></input>
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
-                    <TextEditorEdit {...{setBody, handleSubmit, setPlainBody, highlight}} />
+                    <TextEditorEdit {...{setBody, handleSubmit, setPlainBody, highlight, savedPlainBody}} />
 
                 </div>
                 <div className='lower-canvas'>

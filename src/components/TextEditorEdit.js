@@ -11,25 +11,24 @@ import boldIco from './icons/bold.png'
 import underlineIco from './icons/underline-text.png'
 
 
-
 class TextEditorEdit extends React.Component {
     constructor(props) {
         super(props);
-        let savedPlainBody = this.props.highlight.plainBody
-        if (savedPlainBody) {
-            this.state = { editorState: EditorState.createWithContent(ContentState.createFromText('')) }
-        } else {
-            this.state = { editorState: EditorState.createWithContent(ContentState.createFromText('')) }
-        }
-
+        this.state = { editorState: EditorState.createEmpty() }
         this.focus = () => this.refs.editor.focus();
         this.onChange = (editorState) => this.setState({ editorState });
-
         this.handleKeyCommand = this._handleKeyCommand.bind(this);
         this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.savedPlainBody !== prevProps.savedPlainBody)
+            this.setState({ editorState: EditorState.createWithContent(ContentState.createFromText(this.props.savedPlainBody)) })
+    }
+
+
 
     _handleKeyCommand(command, editorState) {
         const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -74,6 +73,7 @@ class TextEditorEdit extends React.Component {
     }
 
 
+
     render() {
         const { editorState } = this.state;
         let className = 'RichEditor-editor';
@@ -89,8 +89,10 @@ class TextEditorEdit extends React.Component {
         let jsonBody = JSON.stringify(convertToRaw(contentState))
         let plainJSONBody = noteBody.getPlainText()
         console.log(noteBody)
+        console.log(this.props.savedPlainBody)
         // console.log(jsonBody)
         this.props.setBody(jsonBody)
+
 
         return (
             <div className="RichEditor-root">
