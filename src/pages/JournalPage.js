@@ -130,7 +130,7 @@ const JournalPage = ({ user }) => {
                 }
             </div>
             <JournalEntry user={user} />
-            <JournalEditModal user={user} editNote={editNote} />
+            <JournalEditModal user={user} highlight={highlight}/>
         </div>
     );
 }
