@@ -92,6 +92,8 @@ class TextEditorEdit extends React.Component {
         console.log(this.props.savedPlainBody)
         // console.log(jsonBody)
         this.props.setBody(jsonBody)
+        this.props.setPlainBody(plainJSONBody)
+
 
 
         return (

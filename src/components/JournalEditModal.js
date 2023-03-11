@@ -4,15 +4,18 @@ import xIco from './x.png'
 import TextEditorEdit from "./TextEditorEdit"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
+import { editNote } from "../utilities/notes-api";
 import {create} from '../utilities/notes-service'
 import QuestionSelector from "./QuestionSelector"
 import './JournalEditModal.css'
 
-const questions = questionBank
-
 let privatePost = false
 
 let switchText = ''
+
+const questions = questionBank
+
+
 
 const closeWindow = () => {
     let journalCanvas = document.querySelector('.journal-edit-container')
@@ -23,7 +26,6 @@ const closeWindow = () => {
 const JournalEditModal = ({user, getNotes, highlight, savedPlainBody}) => {
     const [mode, setMode] = useState({})
     const [note, setNote] = useState()
-    const [textContent, setTextContent] = useState()
 
     const [error, setError] = useState('');
 
@@ -36,14 +38,14 @@ function handleChange(evt) {
 
 const [body, setBody] = useState('')
 const [plainBody, setPlainBody] = useState('')
-const [question, setQuestion] = useState('')
+const [question, setQuestion] = useState(highlight ? highlight.title : 'no highlight senor')
 
-async function handleSubmit(evt) {
+async function handleEdit(evt) {
   // Prevent form from being submitted to the server
-  evt.preventDefault();
   try {
     console.log('button working')
     console.log(body)
+    console.log(plainBody)
     let notebook = `${user.username}'s Notebook`
     const noteData = {
         author: user.name,
@@ -54,8 +56,8 @@ async function handleSubmit(evt) {
         plainBody: plainBody,
         public: privatePost ? false : true
     }
-    create(noteData)
-    console.log(noteData)
+    editNote(evt, noteData)
+    console.log('event to edit' + evt)
     closeWindow()
     const notes = await getNotes()
     setMode('Share')
@@ -111,27 +113,28 @@ async function handleSubmit(evt) {
         let submitBtn = document.querySelector('.submit-btn')
         let textBox = document.querySelector('.public-DraftStyleDefault-block')
         publicMode()
-    }, [savedPlainBody])
+        console.log(questions[0]['body'])
+    }, [, question])
 
 
 
     return (
         <div className='journal-edit-container'>
-            <div className='journal-canvas' onSubmit={handleSubmit}>
+            <div className='journal-canvas'>
                 <div className='upper-canvas'>
                     <div className="entry-pic">
                         <img className='profile-pic' src={`/images/${user.username}.png`}></img>
                         <p >{user.username}</p>
                     </div>
                     <div className='canvas-title'>
-                        <QuestionSelector setQuestion={setQuestion}/>
+                       <h1>{highlight.title}</h1>
                     </div>
                     <div className='canvas-exit' onClick={closeWindow}>
                         <img className='x-btn' src={xIco}></img>
                     </div>
                 </div>
                 <div className='body-canvas'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={() => handleEdit(highlight._id)}>
                         <input type='hidden' name='author' value={user.name}></input>
                         <input type='hidden' name='username' value={user.username}></input>
                         <input type='hidden' name="notebook" default={'default-tesst'}></input>
@@ -141,14 +144,14 @@ async function handleSubmit(evt) {
                         <input type='hidden' name='likes' value={0}></input>
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
-                    <TextEditorEdit {...{setBody, handleSubmit, setPlainBody, highlight, savedPlainBody}} />
+                    <TextEditorEdit {...{setBody, setPlainBody, highlight, savedPlainBody}} />
 
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
                         {'Switch Privacy:'}
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='edit-submit-btn' type='submit' onClick={handleSubmit}></button>
+                        <button className='edit-submit-btn' type='submit' onClick={() => handleEdit(highlight._id)}></button>
                     </div>
                 </div>
 

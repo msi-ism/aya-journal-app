@@ -130,6 +130,10 @@ body {
 .options-container > .del-btn, .edit-btn {
     max-height: 25px;
 }
+.options-container > .del-btn:hover, .edit-btn:hover {
+    max-height: 30px;
+
+}
 
 .journal-user > .profile-pic {
     max-height: 40px;

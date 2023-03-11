@@ -24,9 +24,9 @@ export function deleteNote(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
 
-export function editNote(id) {
+export function editNote(id, noteData) {
   console.log('edit micheal')
-  return sendRequest(`${BASE_URL}/update/${id}`, 'PUT')
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', noteData)
 }
 
 // ^ Helper Functions
@@ -45,7 +45,7 @@ async function sendRequest(url, method = 'GET', payload = null) {
     // ^ res.ok will be false if the status code set to 4xx in the controller action
     const res = await fetch(url, options);
     // ^ res.ok will be false if the status code set to 4xx in the controller action
-    if (res.ok) return res.json(payload)
+    if (res.ok) return res.json("here's the payload" + payload)
     throw new Error('Bad Request');
 }
 

@@ -5,7 +5,7 @@ const router = express.Router()
 const notesCtrl = require('../../controllers/api/notes')
 const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
-router.put(`/update/:id`, notesCtrl.editNote)
+router.put(`/:id`, notesCtrl.editNote)
 
 router.delete('/:id', notesCtrl.deleteNote)
 

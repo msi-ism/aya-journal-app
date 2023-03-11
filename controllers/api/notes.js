@@ -69,7 +69,8 @@ async function editNote(req, res) {
   try{
       const note = await Note.findByIdAndUpdate(req.params.id, req.body, { returnDocument: "after" }
       )
-      const updatedNotes = await Note.find({})
+      const updatedNotes = await Note.find({username: req.params.loggedInUser})
+      console.log(updatedNotes)
       res.status(200).json(updatedNotes)
   }catch(e){
       console.log(e)

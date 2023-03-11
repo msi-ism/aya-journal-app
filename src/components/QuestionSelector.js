@@ -1,4 +1,5 @@
 import questionBank from "../data/Questions";
+import {useState, useEffect} from 'react'
 
 const questions = questionBank
 
@@ -10,6 +11,10 @@ const QuestionSelector = ({setQuestion}) => {
         setQuestion(output)
         console.log(output)
     }
+
+    useEffect(() => {
+
+    }, [setQuestion])
 
     return (
         <div>
