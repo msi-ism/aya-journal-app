@@ -86,7 +86,9 @@
     height: 100%;
     width: 100%;
     color: black !important;
-    background-color: pink;
+    overflow-y: scroll;
+    background-color: white;
+
   }
   
   
@@ -118,6 +120,7 @@
     border: 2px solid var(--purple-3);
     padding: 10px;
     margin: 20px;
+    
   }
   
   .upper-canvas > .canvas-exit {

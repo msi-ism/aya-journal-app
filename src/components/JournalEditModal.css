@@ -96,7 +96,7 @@
     height: 100%;
     width: 100%;
     color: black !important;
-    background-color: pink;
+    overflow-y: scroll;
   }
   
   

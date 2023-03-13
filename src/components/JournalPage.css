@@ -64,9 +64,9 @@ body {
 
 .journals-list > .journal-entry {
     display: grid;
-    grid-template-rows: .25fr 1fr .25fr;
+    grid-template-rows: .5fr 1fr .1fr;
     width: 375px;
-    height: 520px;
+    height: 400px;
     background-color: white;
     border-radius: 20px;
     cursor: pointer;
@@ -93,6 +93,8 @@ body {
 .journal-entry > .entry-body {
     height: 100%;
     padding: 10px;
+    overflow-y: scroll;
+
 
 }
 .journal-entry > .entry-lower {
