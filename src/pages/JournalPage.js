@@ -113,16 +113,16 @@ const JournalPage = ({ user }) => {
                                     </p>
                                 </div>
                                 <div className="entry-lower">
-                                    <div className='journal-user'>
+                                    {/* <div className='journal-user'>
                                         <img className='profile-pic' src={user.img ? `/images/${note.username}.png` : `/images/account.png`}></img>
                                         <p>@{note.username}</p>
+                                    </div> */}
+                                    <div className='time-stamp'>
+                                        <p>{convertDate(note.created_at)}</p>
                                     </div>
                                     <div id='edit-modal-box' className='options-container'>
                                         <img className="edit-btn" onClick={() => handleEdit(note._id)} src={editIco}></img>
                                         <img className="del-btn" onClick={() => handleDelete(note._id)} src={trashIco}></img>
-                                    </div>
-                                    <div className='time-stamp'>
-                                        <p>{convertDate(note.created_at)}</p>
                                     </div>
                                 </div>
                             </li>

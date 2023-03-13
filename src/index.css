@@ -237,10 +237,19 @@ button:disabled, form:invalid button[type="submit"] {
 .navbar > .navmenu {
   display: flex;
   gap: 15px;
+  align-items: center;
+  justify-content: center;
 }
 
 .navmenu > .navname {
   color: white;
+}
+
+.navmenu > .profile-pic {
+  display: flex;
+  flex-direction: row;
+  max-height: 40px;
+  border-radius: 20px;
 }
 
 .navbar > Link {
