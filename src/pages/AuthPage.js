@@ -12,7 +12,7 @@ const AuthPage = (props) => {
     let loginSentence = ''
     if (showSignUp) {
         linkText = ' Login'
-        loginSentence = 'Already have an account?'
+        loginSentence = 'Sign-ups are currently unavailable but if you already have an account'
     } else {
         linkText = ' SignUp'
         loginSentence = 'Need an account?'

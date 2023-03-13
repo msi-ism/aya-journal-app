@@ -127,7 +127,7 @@ async function handleEdit(evt) {
                         <p >{user.username}</p>
                     </div>
                     <div className='canvas-title'>
-                       <h1>{highlight.title}</h1>
+                       <h1 className='edit-canvas-title'>{highlight.title}</h1>
                     </div>
                     <div className='canvas-exit' onClick={closeWindow}>
                         <img className='x-btn' src={xIco}></img>

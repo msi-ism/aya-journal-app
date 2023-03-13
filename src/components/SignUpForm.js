@@ -54,8 +54,8 @@ export default function SignUpForm({ setUser }) {
 
         return (
           <div>
-            <h1>Sign-Up!</h1>
-            <div className="form-container">
+            {/* <h1>Sign-Up!</h1> */}
+            {/* <div className="form-container">
               <form className='form' autoComplete="off" onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input 
@@ -74,20 +74,20 @@ export default function SignUpForm({ setUser }) {
                 type="email" 
                 name="email" 
                 value={info.email} 
-                onChange={handleChange} required />
+                onChange={handleChange} required /> */}
                 {/* <label>IMG</label>
                 <input 
                 type="text" 
                 name="img" 
                 value={this.state.img} 
                 onChange={this.handleChange} required /> */}
-                <label>Password</label>
+                {/* <label>Password</label>
                 <input type="password" name="password" value={info.password} onChange={handleChange} required />
                 <label>Confirm</label>
                 <input type="password" name="confirm" value={info.confirm} onChange={handleChange} required />
                 <button className='signup-btn' type="submit" disabled={disable}>SIGN UP</button>
               </form>
-            </div>
+            </div> */}
             <p className="error-message">&nbsp;{error}</p>
           </div>
         );
