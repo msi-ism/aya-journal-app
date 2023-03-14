@@ -23,7 +23,7 @@ const closeWindow = () => {
 }
 
 
-const JournalEditModal = ({user, getNotes, highlight, savedPlainBody}) => {
+const JournalEditModal = ({user, getNotes, highlight, savedPlainBody, savedBody}) => {
     const [mode, setMode] = useState({})
     const [note, setNote] = useState()
 
@@ -144,7 +144,7 @@ async function handleEdit(evt) {
                         <input type='hidden' name='likes' value={0}></input>
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
-                    <TextEditorEdit {...{setBody, setPlainBody, highlight, savedPlainBody}} />
+                    <TextEditorEdit {...{setBody, setPlainBody, highlight, savedPlainBody, savedBody}} />
 
                 </div>
                 <div className='lower-canvas'>

@@ -20,7 +20,7 @@ const NavBar = ({ user, setUser }) => {
                 {!user ? <Link to='/auth'>SignUp</Link> : null}
                 <Link to={{ pathname: "https://github.com/msi-ism/aya-journal-app" }}>{" "}{" "}About</Link>
                 {user ? <><span className='navname'>  Welcome, {user.name} <Link className='navname' to='' onClick={handleLogOut}>Log Out</Link></span></> : ''}
-                <img className='profile-pic' src={user.img ? `/images/${user.username}.png` : `/images/account.png`}></img>
+                {user ? <img className='profile-pic' src={user.img ? `/images/${user.username}.png` : `/images/account.png`}></img> : null}
             </div>
         </nav>
     )

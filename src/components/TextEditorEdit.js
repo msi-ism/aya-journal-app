@@ -2,7 +2,7 @@ import React from 'react';
 import { useSubmit } from 'react'
 import './TextEditor.css'
 import '../../node_modules/draft-js/dist/Draft.css'
-import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw, ContentState } from 'draft-js'
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw, ContentState, convertFromRaw } from 'draft-js'
 import headingIco from './icons/heading.png'
 import numlistIco from './icons/numlist.png'
 import listIco from './icons/list.png'
@@ -22,10 +22,12 @@ class TextEditorEdit extends React.Component {
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     }
-
     componentDidUpdate(prevProps) {
+        // if (this.props.savedPlainBody !== prevProps.savedPlainBody)
+        //     this.setState({ editorState: EditorState.createWithContent(ContentState.createFromText(convertFromRaw(JSON.parse(this.props.savedBody)))) })
+        // let savedBodyState = EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.savedBody)))
         if (this.props.savedPlainBody !== prevProps.savedPlainBody)
-            this.setState({ editorState: EditorState.createWithContent(ContentState.createFromText(this.props.savedPlainBody)) })
+            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.savedBody)))) })
     }
 
 
@@ -88,9 +90,10 @@ class TextEditorEdit extends React.Component {
         let noteBody = editorState.getCurrentContent()
         let jsonBody = JSON.stringify(convertToRaw(contentState))
         let plainJSONBody = noteBody.getPlainText()
+        // let richTextBody = JSON.stringify(convertFromRaw(jsonBody))
         console.log(noteBody)
         console.log(this.props.savedPlainBody)
-        // console.log(jsonBody)
+        console.log('this is json body' + jsonBody)
         this.props.setBody(jsonBody)
         this.props.setPlainBody(plainJSONBody)
 

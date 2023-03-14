@@ -18,10 +18,12 @@ import JournalEditModal from '../components/JournalEditModal';
 
 
 
+
 const JournalPage = ({ user }) => {
     const [notes, setNotes] = useState()
     const [highlight, setHighlight] = useState({})
     const [savedPlainBody, setSPB] = useState('kldjsd lskdjdsoi lsd')
+    const [savedBody, setSavedBody] = useState('')
     const loggedInUser = user.username
 
     const getNotes = async () => {
@@ -51,7 +53,9 @@ const JournalPage = ({ user }) => {
         console.log(evt)
         setHighlight(selectedNote[0])
         setSPB(selectedNote[0].plainBody)
+        setSavedBody(selectedNote[0].body)
         console.log(savedPlainBody)
+        console.log(savedBody)
 
     }
     
@@ -90,7 +94,7 @@ const JournalPage = ({ user }) => {
     useEffect(() => {
 
         getNotes()
-        console.log('selectedNoteBody: ' + highlight.plainBody)
+        console.log('selectedNoteBody: ' + savedBody)
         // console.log(notes)
 
     }, [highlight])
@@ -133,7 +137,7 @@ const JournalPage = ({ user }) => {
                 }
             </div>
             <JournalEntry user={user} />
-            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes}/>
+            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes} savedBody={savedBody}/>
         </div>
     );
 }
