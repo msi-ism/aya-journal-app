@@ -15,15 +15,16 @@ import { deleteNote, editNote } from "../utilities/notes-api";
 import editIco from '../components/edit.png'
 import trashIco from '../components/trash.png'
 import JournalEditModal from '../components/JournalEditModal';
-
-
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw, ContentState } from 'draft-js'
+import RichTextPreview from '../components/RichTextPreview';
 
 
 const JournalPage = ({ user }) => {
     const [notes, setNotes] = useState()
     const [highlight, setHighlight] = useState({})
-    const [savedPlainBody, setSPB] = useState('kldjsd lskdjdsoi lsd')
+    const [savedPlainBody, setSPB] = useState('')
     const [savedBody, setSavedBody] = useState('')
+    const [journalPreview, setJournalPreview] = useState('')
     const loggedInUser = user.username
 
     const getNotes = async () => {
@@ -44,6 +45,25 @@ const JournalPage = ({ user }) => {
         journalCanvas.style.visibility = 'visible'
     }
 
+    const populatePreviews = async (id, evt) => {
+        let getBoxData = await notesService.getUsersNotes(loggedInUser)
+        if (getBoxData) {
+            let previewBoxes = document.querySelectorAll('.journal-entry')
+            for (let i=0, j=0; i < getBoxData.length, j < previewBoxes.length; i++, j++) {
+                console.log(getBoxData[i]._id)
+                console.log(previewBoxes[j].id)
+                if (getBoxData[i]._id == previewBoxes[j].id) {
+                    console.log(getBoxData[i].body)
+                    setJournalPreview(getBoxData[i].body)
+                }
+
+            }
+            console.log()
+
+        }
+
+    }
+
 
     let selectedNote = ''
     const handleEditModal = (evt) => {
@@ -54,11 +74,7 @@ const JournalPage = ({ user }) => {
         setHighlight(selectedNote[0])
         setSPB(selectedNote[0].plainBody)
         setSavedBody(selectedNote[0].body)
-        console.log(savedPlainBody)
-        console.log(savedBody)
-
     }
-    
 
 
     const clearModal = (evt) => {
@@ -87,8 +103,8 @@ const JournalPage = ({ user }) => {
 
     const convertDate = (dbDate) => {
         let date = new Date(dbDate)
-        return date.toDateString('en-GB', {day: 'numeric', month: 'long', year:'numeric'})
-     }
+        return date.toDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    }
 
 
     useEffect(() => {
@@ -97,7 +113,7 @@ const JournalPage = ({ user }) => {
         console.log('selectedNoteBody: ' + savedBody)
         // console.log(notes)
 
-    }, [highlight])
+    }, [])
     return (
         <div className='page-container'>
             <div className='create-new-entry-div'>
@@ -108,13 +124,13 @@ const JournalPage = ({ user }) => {
                 {notes ?
                     <ul className='journals-list'>
                         {notes.flatMap((note, idx) => (
-                            <li key={idx} className='journal-entry'>
+                            <li key={idx} className='journal-entry' >
                                 <div className="entry-header" onClick={() => handleEditModal(note._id)}>
                                     <h2 className='entry-title'>{note.title}</h2>
                                 </div>
                                 <div className='entry-body' onClick={() => handleEditModal(note._id)}>
-                                    <p>{note.plainBody}
-                                    </p>
+                                    {/* <p>{note.plainBody}</p> */}
+                                    <RichTextPreview {...{ highlight, savedPlainBody, journalPreview, note }}  />
                                 </div>
                                 <div className="entry-lower">
                                     {/* <div className='journal-user'>
@@ -137,7 +153,7 @@ const JournalPage = ({ user }) => {
                 }
             </div>
             <JournalEntry user={user} />
-            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes} savedBody={savedBody}/>
+            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes} savedBody={savedBody} />
         </div>
     );
 }

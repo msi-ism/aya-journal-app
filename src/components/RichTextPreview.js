@@ -11,7 +11,7 @@ import boldIco from './icons/bold.png'
 import underlineIco from './icons/underline-text.png'
 
 
-class TextEditorEdit extends React.Component {
+class RichTextPreview extends React.Component {
     constructor(props) {
         super(props);
         this.state = { editorState: EditorState.createEmpty() }
@@ -22,9 +22,8 @@ class TextEditorEdit extends React.Component {
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     }
-    componentDidUpdate(prevProps) {
-        if (this.props.savedPlainBody !== prevProps.savedPlainBody)
-            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.savedBody)))) })
+    componentDidMount() {
+            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.note.body)))) })
     }
 
 
@@ -91,14 +90,14 @@ class TextEditorEdit extends React.Component {
         console.log(noteBody)
         console.log(this.props.savedPlainBody)
         console.log('this is json body' + jsonBody)
-        this.props.setBody(jsonBody)
-        this.props.setPlainBody(plainJSONBody)
+        // this.props.setBody(jsonBody)
+        // this.props.setPlainBody(plainJSONBody)
 
 
 
         return (
             <div className="RichEditor-root">
-                <div className='edit-controls'>
+                {/* <div className='edit-controls'>
                     <BlockStyleControls
                         editorState={editorState}
                         onToggle={this.toggleBlockType}
@@ -107,7 +106,7 @@ class TextEditorEdit extends React.Component {
                         editorState={editorState}
                         onToggle={this.toggleInlineStyle}
                     />
-                </div>
+                </div> */}
                 <div className={className} onClick={this.focus}>
                     <Editor
                         blockStyleFn={getBlockStyle}
@@ -121,6 +120,7 @@ class TextEditorEdit extends React.Component {
                         // ^ Below line of code causing 'ref string' bug. Need to figure out why.
                         ref="editor"
                         spellCheck={true}
+                        readOnly={true}
 
                     />
                     <button className='editor-submit-btn' type='submit' label='Submit'>Submit</button>
@@ -234,4 +234,4 @@ const InlineStyleControls = (props) => {
     );
 };
 
-export default TextEditorEdit;
+export default RichTextPreview;
