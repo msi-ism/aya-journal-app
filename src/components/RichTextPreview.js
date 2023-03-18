@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSubmit } from 'react'
 import './TextEditor.css'
-import '../../node_modules/draft-js/dist/Draft.css'
+// import '../../node_modules/draft-js/dist/Draft.css'
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw, ContentState, convertFromRaw } from 'draft-js'
 import headingIco from './icons/heading.png'
 import numlistIco from './icons/numlist.png'
@@ -9,7 +9,7 @@ import listIco from './icons/list.png'
 import italicsIco from './icons/italics.png'
 import boldIco from './icons/bold.png'
 import underlineIco from './icons/underline-text.png'
-
+import './RichTextPreview.css'
 
 class RichTextPreview extends React.Component {
     constructor(props) {
@@ -74,7 +74,7 @@ class RichTextPreview extends React.Component {
 
     render() {
         const { editorState } = this.state;
-        let className = 'RichEditor-editor';
+        let className = 'RichEditor-editor-preview';
         let contentState = editorState.getCurrentContent();
         if (!contentState.hasText()) {
             if (contentState.getBlockMap().first().getType() !== 'unstyled') {
@@ -96,7 +96,7 @@ class RichTextPreview extends React.Component {
 
 
         return (
-            <div className="RichEditor-root">
+            <div className="RichEditor-root-preview">
                 {/* <div className='edit-controls'>
                     <BlockStyleControls
                         editorState={editorState}
@@ -121,9 +121,7 @@ class RichTextPreview extends React.Component {
                         ref="editor"
                         spellCheck={true}
                         readOnly={true}
-
                     />
-                    <button className='editor-submit-btn' type='submit' label='Submit'>Submit</button>
                 </div>
             </div>
         );
