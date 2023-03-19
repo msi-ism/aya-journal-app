@@ -30,7 +30,10 @@ body {
 .journal-page-header {
     grid-column-start: 2;
     color: white;
+    text-shadow: 0 0 3px #000000;
+     
 }
+
 
 
 
@@ -54,14 +57,13 @@ body {
 }
 
 .notebook-container > .journals-list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
     margin-top: 50px;
     gap: 15px;
     width: 100%;
-    align-items: center;
-    margin-left: 50px;
+    justify-content: center;
 
 }
 

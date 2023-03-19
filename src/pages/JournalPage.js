@@ -102,9 +102,11 @@ const JournalPage = ({ user }) => {
 
 
     useEffect(() => {
-   
+        getNotes()
         console.log('selectedNoteBody: ' + savedBody)
-    }, [getNotes()])
+    })
+
+    
     return (
         <div className='page-container'>
             <div className='create-new-entry-div'>
