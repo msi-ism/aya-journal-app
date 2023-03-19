@@ -57,7 +57,6 @@ const JournalEntry = ({ user, getNotes, setNotes }) => {
             const notes = await notesService.getUsersNotes(loggedInUser)
             setNotes(notes)
             console.log(notes)
-
             setMode('Share')
         } catch {
             setError('Error getting data');

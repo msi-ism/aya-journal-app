@@ -8,6 +8,7 @@ import { editNote } from "../utilities/notes-api";
 import {create} from '../utilities/notes-service'
 import QuestionSelector from "./QuestionSelector"
 import './JournalEditModal.css'
+import * as notesService from '../utilities/notes-service';
 
 
 let privatePost = false
@@ -25,6 +26,7 @@ const closeWindow = () => {
 
 
 const JournalEditModal = ({user, getNotes, setNotes, highlight, savedPlainBody, savedBody}) => {
+    const loggedInUser = user.username
     const [mode, setMode] = useState({})
     const [error, setError] = useState('');
     const [now, setNow] = useState()
@@ -55,10 +57,9 @@ async function handleEdit(evt) {
     }
     editNote(evt, noteData)
     closeWindow()
-    let newNotes = await getNotes()
-    setNotes([...newNotes])
-    setNow(newNotes)
-    console.log('newNotes' + newNotes)
+    const notes = await notesService.getUsersNotes(loggedInUser)
+    setNotes(notes)
+    console.log(notes)
     // setMode('Share')
     console.log('event to edit' + evt)
   } catch {
