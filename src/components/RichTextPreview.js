@@ -23,7 +23,13 @@ class RichTextPreview extends React.Component {
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     }
     componentDidMount() {
-            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.note.body)))) })
+        this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.note.body)))) })
+
+    }
+    componentDidUpdate(prevProps) {
+        if (this.props.note.body !== prevProps.note.body)
+        this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.note.body)))) })
+
     }
 
 
@@ -87,11 +93,9 @@ class RichTextPreview extends React.Component {
         let jsonBody = JSON.stringify(convertToRaw(contentState))
         let plainJSONBody = noteBody.getPlainText()
         // let richTextBody = JSON.stringify(convertFromRaw(jsonBody))
-        console.log(noteBody)
-        console.log(this.props.savedPlainBody)
-        console.log('this is json body' + jsonBody)
-        // this.props.setBody(jsonBody)
-        // this.props.setPlainBody(plainJSONBody)
+        // console.log(noteBody)
+        // console.log(this.props.savedPlainBody)
+        // console.log('this is json body' + jsonBody)
 
 
 

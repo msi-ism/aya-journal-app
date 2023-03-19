@@ -30,8 +30,8 @@ const JournalPage = ({ user }) => {
     const getNotes = async () => {
         try {
             const data = await notesService.getUsersNotes(loggedInUser)
-            console.log(data)
             setNotes(data)
+            console.log('notes ' + data)
 
         } catch (error) {
             // ^ if we have an error
@@ -44,23 +44,6 @@ const JournalPage = ({ user }) => {
         let journalCanvas = document.querySelector('.journal-container')
         journalCanvas.style.visibility = 'visible'
     }
-
-    // const populatePreviews = async (id, evt) => {
-    //     let getBoxData = await notesService.getUsersNotes(loggedInUser)
-    //     if (getBoxData) {
-    //         let previewBoxes = document.querySelectorAll('.journal-entry')
-    //         for (let i=0, j=0; i < getBoxData.length, j < previewBoxes.length; i++, j++) {
-    //             console.log(getBoxData[i]._id)
-    //             console.log(previewBoxes[j].id)
-    //             if (getBoxData[i]._id == previewBoxes[j].id) {
-    //                 console.log(getBoxData[i].body)
-    //                 setJournalPreview(getBoxData[i].body)
-    //             }
-
-    //         }
-    //     }
-
-    // }
 
 
     let selectedNote = ''
@@ -85,7 +68,9 @@ const JournalPage = ({ user }) => {
     const handleDelete = async (evt) => {
         console.log(evt)
         const notes = await deleteNote(evt)
-        console.log(notes)
+        // setNotes(notes)
+        // deleteNote(evt)
+        getNotes()
     }
     const handleEdit = async (evt) => {
         // console.log(highlight[0])
@@ -103,10 +88,9 @@ const JournalPage = ({ user }) => {
 
     useEffect(() => {
         getNotes()
-        console.log('selectedNoteBody: ' + savedBody)
-    })
+    }, [])
 
-    
+
     return (
         <div className='page-container'>
             <div className='create-new-entry-div'>
@@ -123,7 +107,7 @@ const JournalPage = ({ user }) => {
                                 </div>
                                 <div className='entry-body' onClick={() => handleEditModal(note._id)}>
                                     {/* <p>{note.plainBody}</p> */}
-                                    <RichTextPreview {...{ highlight, savedPlainBody, journalPreview, note }}  />
+                                    <RichTextPreview {...{ highlight, savedPlainBody, journalPreview, note, getNotes }}  />
                                 </div>
                                 <div className="entry-lower">
                                     {/* <div className='journal-user'>
@@ -145,8 +129,8 @@ const JournalPage = ({ user }) => {
                     'Loading'
                 }
             </div>
-            <JournalEntry user={user} />
-            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes} savedBody={savedBody} />
+            <JournalEntry user={user} setNotes={setNotes}/>
+            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes} savedBody={savedBody} setNotes={setNotes} />
         </div>
     );
 }

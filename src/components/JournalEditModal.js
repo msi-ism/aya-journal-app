@@ -23,29 +23,25 @@ const closeWindow = () => {
 }
 
 
-const JournalEditModal = ({user, getNotes, highlight, savedPlainBody, savedBody}) => {
+const JournalEditModal = ({user, getNotes, setNotes, highlight, savedPlainBody, savedBody}) => {
     const [mode, setMode] = useState({})
-    const [note, setNote] = useState()
-
     const [error, setError] = useState('');
+    const [now, setNow] = useState()
 
     
 
-function handleChange(evt) {
-  setNote({ ...note, [evt.target.name]: evt.target.value });
-  setError('');
-}
+// function handleChange(evt) {
+//   setNote({ ...note, [evt.target.name]: evt.target.value });
+//   setError('');
+// }
 
 const [body, setBody] = useState('')
 const [plainBody, setPlainBody] = useState('')
 const [question, setQuestion] = useState(highlight ? highlight.title : 'no highlight senor')
 
 async function handleEdit(evt) {
-  // Prevent form from being submitted to the server
   try {
     console.log('button working')
-    console.log(body)
-    console.log(plainBody)
     let notebook = `${user.username}'s Notebook`
     const noteData = {
         author: user.name,
@@ -57,11 +53,12 @@ async function handleEdit(evt) {
         public: privatePost ? false : true
     }
     editNote(evt, noteData)
-    console.log('event to edit' + evt)
     closeWindow()
-    const notes = await getNotes()
-    setMode('Share')
-    setNote(notes)
+    let newNotes = await getNotes()
+    setNotes(newNotes)
+    setNow(newNotes)
+    // setMode('Share')
+    console.log('event to edit' + evt)
   } catch {
     setError('Error getting data');
   }
@@ -113,8 +110,8 @@ async function handleEdit(evt) {
         let submitBtn = document.querySelector('.submit-btn')
         let textBox = document.querySelector('.public-DraftStyleDefault-block')
         publicMode()
-        console.log(questions[0]['body'])
-    }, [, question])
+        console.log('now notes are: ' + now)
+    }, [question])
 
 
 
@@ -151,7 +148,7 @@ async function handleEdit(evt) {
                     <div className="submit-btns">
                         {'Switch Privacy:'}
                         <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='edit-submit-btn' type='submit' onClick={() => handleEdit(highlight._id)}></button>
+                        <button className='edit-submit-btn' type='submit' onClick={() => handleEdit(highlight._id)}>Save</button>
                     </div>
                 </div>
 

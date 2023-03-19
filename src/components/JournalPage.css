@@ -60,8 +60,9 @@ body {
     display: grid;
     /* flex-direction: row;
     flex-wrap: wrap; */
-    margin-top: 50px;
-    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 25px;
+    gap: 30px;
     width: 100%;
     justify-content: center;
 

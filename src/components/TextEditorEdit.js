@@ -88,9 +88,9 @@ class TextEditorEdit extends React.Component {
         let jsonBody = JSON.stringify(convertToRaw(contentState))
         let plainJSONBody = noteBody.getPlainText()
         // let richTextBody = JSON.stringify(convertFromRaw(jsonBody))
-        console.log(noteBody)
-        console.log(this.props.savedPlainBody)
-        console.log('this is json body' + jsonBody)
+        // console.log(noteBody)
+        // console.log(this.props.savedPlainBody)
+        // console.log('this is json body' + jsonBody)
         this.props.setBody(jsonBody)
         this.props.setPlainBody(plainJSONBody)
 

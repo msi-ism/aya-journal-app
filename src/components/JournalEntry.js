@@ -19,20 +19,20 @@ const closeWindow = () => {
 }
 
 
-const JournalEntry = ({user, getNotes}) => {
+const JournalEntry = ({user, getNotes, setNotes}) => {
     const [mode, setMode] = useState({})
-    const [note, setNote] = useState({
-        // notebook: '',
-        title: '',
-        body: ''
-    })
+    // const [note, setNote] = useState({
+    //     // notebook: '',
+    //     title: '',
+    //     body: ''
+    // })
 
     const [error, setError] = useState('');
 
-function handleChange(evt) {
-  setNote({ ...note, [evt.target.name]: evt.target.value });
-  setError('');
-}
+// function handleChange(evt) {
+//   setNote({ ...note, [evt.target.name]: evt.target.value });
+//   setError('');
+// }
 
 const [body, setBody] = useState('')
 const [plainBody, setPlainBody] = useState('')
@@ -59,7 +59,7 @@ async function handleSubmit(evt) {
     closeWindow()
     const notes = await getNotes()
     setMode('Share')
-    setNote(notes)
+    setNotes(notes)
   } catch {
     setError('Error getting data');
   }
@@ -111,6 +111,7 @@ async function handleSubmit(evt) {
         let privacyBtn = document.querySelector('.privacy-btn')
         let submitBtn = document.querySelector('.edit-submit-btn')
         publicMode()
+
     }, [])
 
 
