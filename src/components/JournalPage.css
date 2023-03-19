@@ -1,5 +1,6 @@
 body {
     background-color: white !important;
+
 }
 
 :root {
@@ -58,7 +59,9 @@ body {
     flex-wrap: wrap;
     margin-top: 50px;
     gap: 15px;
-
+    width: 100%;
+    align-items: center;
+    margin-left: 50px;
 
 }
 
@@ -70,6 +73,7 @@ body {
     background-color: white;
     border-radius: 20px;
     cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(24, 3, 1, .5);
 }
 
 .journal-entry > .entry-header {

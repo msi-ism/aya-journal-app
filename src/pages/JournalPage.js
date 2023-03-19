@@ -45,24 +45,22 @@ const JournalPage = ({ user }) => {
         journalCanvas.style.visibility = 'visible'
     }
 
-    const populatePreviews = async (id, evt) => {
-        let getBoxData = await notesService.getUsersNotes(loggedInUser)
-        if (getBoxData) {
-            let previewBoxes = document.querySelectorAll('.journal-entry')
-            for (let i=0, j=0; i < getBoxData.length, j < previewBoxes.length; i++, j++) {
-                console.log(getBoxData[i]._id)
-                console.log(previewBoxes[j].id)
-                if (getBoxData[i]._id == previewBoxes[j].id) {
-                    console.log(getBoxData[i].body)
-                    setJournalPreview(getBoxData[i].body)
-                }
+    // const populatePreviews = async (id, evt) => {
+    //     let getBoxData = await notesService.getUsersNotes(loggedInUser)
+    //     if (getBoxData) {
+    //         let previewBoxes = document.querySelectorAll('.journal-entry')
+    //         for (let i=0, j=0; i < getBoxData.length, j < previewBoxes.length; i++, j++) {
+    //             console.log(getBoxData[i]._id)
+    //             console.log(previewBoxes[j].id)
+    //             if (getBoxData[i]._id == previewBoxes[j].id) {
+    //                 console.log(getBoxData[i].body)
+    //                 setJournalPreview(getBoxData[i].body)
+    //             }
 
-            }
-            console.log()
+    //         }
+    //     }
 
-        }
-
-    }
+    // }
 
 
     let selectedNote = ''
@@ -92,10 +90,6 @@ const JournalPage = ({ user }) => {
     const handleEdit = async (evt) => {
         // console.log(highlight[0])
         console.log(evt)
-
-        // handleEditModal()
-        // const notes = await editNote(evt)
-        // console.log(notes)
     }
 
 
@@ -108,12 +102,9 @@ const JournalPage = ({ user }) => {
 
 
     useEffect(() => {
-
-        getNotes()
+   
         console.log('selectedNoteBody: ' + savedBody)
-        // console.log(notes)
-
-    }, [])
+    }, [getNotes()])
     return (
         <div className='page-container'>
             <div className='create-new-entry-div'>
