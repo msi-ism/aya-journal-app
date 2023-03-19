@@ -20,7 +20,7 @@ import RichTextPreview from '../components/RichTextPreview';
 
 
 const JournalPage = ({ user }) => {
-    const [notes, setNotes] = useState()
+    const [notes, setNotes] = useState([])
     const [highlight, setHighlight] = useState({})
     const [savedPlainBody, setSPB] = useState('')
     const [savedBody, setSavedBody] = useState('')
@@ -86,6 +86,8 @@ const JournalPage = ({ user }) => {
     }
 
 
+
+
     useEffect(() => {
         getNotes()
     }, [])
@@ -107,7 +109,7 @@ const JournalPage = ({ user }) => {
                                 </div>
                                 <div className='entry-body' onClick={() => handleEditModal(note._id)}>
                                     {/* <p>{note.plainBody}</p> */}
-                                    <RichTextPreview {...{ highlight, savedPlainBody, journalPreview, note, getNotes }}  />
+                                    <RichTextPreview {...{ user, highlight, savedPlainBody, journalPreview, note, getNotes }}  />
                                 </div>
                                 <div className="entry-lower">
                                     {/* <div className='journal-user'>
@@ -126,11 +128,11 @@ const JournalPage = ({ user }) => {
 
                         ))}
                     </ul> :
-                    'Loading'
+                    'No notes: Loading '
                 }
             </div>
-            <JournalEntry user={user} setNotes={setNotes}/>
-            <JournalEditModal user={user} highlight={highlight} savedPlainBody={savedPlainBody} notes={notes} savedBody={savedBody} setNotes={setNotes} />
+            <JournalEntry {...{user, setNotes, getNotes}}/>
+            <JournalEditModal {...{user, highlight, savedPlainBody, notes, savedBody, setNotes}} />
         </div>
     );
 }

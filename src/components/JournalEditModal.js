@@ -9,6 +9,7 @@ import {create} from '../utilities/notes-service'
 import QuestionSelector from "./QuestionSelector"
 import './JournalEditModal.css'
 
+
 let privatePost = false
 
 let switchText = ''
@@ -55,8 +56,9 @@ async function handleEdit(evt) {
     editNote(evt, noteData)
     closeWindow()
     let newNotes = await getNotes()
-    setNotes(newNotes)
+    setNotes([...newNotes])
     setNow(newNotes)
+    console.log('newNotes' + newNotes)
     // setMode('Share')
     console.log('event to edit' + evt)
   } catch {

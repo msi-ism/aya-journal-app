@@ -3,9 +3,10 @@ import xIco from './x.png'
 import TextEditor from "./TextEditor"
 import questionBank from "../data/Questions"
 import * as notesAPI from '../utilities/notes-api'
-import {create} from '../utilities/notes-service'
+import { create } from '../utilities/notes-service'
 import QuestionSelector from "./QuestionSelector"
 import './JournalEntry.css'
+import * as notesService from '../utilities/notes-service';
 
 const questions = questionBank
 
@@ -19,51 +20,49 @@ const closeWindow = () => {
 }
 
 
-const JournalEntry = ({user, getNotes, setNotes}) => {
+const JournalEntry = ({ user, getNotes, setNotes }) => {
+    const loggedInUser = user.username
     const [mode, setMode] = useState({})
-    // const [note, setNote] = useState({
-    //     // notebook: '',
-    //     title: '',
-    //     body: ''
-    // })
 
     const [error, setError] = useState('');
 
-// function handleChange(evt) {
-//   setNote({ ...note, [evt.target.name]: evt.target.value });
-//   setError('');
-// }
+    // function handleChange(evt) {
+    //   setNote({ ...note, [evt.target.name]: evt.target.value });
+    //   setError('');
+    // }
 
-const [body, setBody] = useState('')
-const [plainBody, setPlainBody] = useState('')
-const [question, setQuestion] = useState(questions[0]['body'])
+    const [body, setBody] = useState('')
+    const [plainBody, setPlainBody] = useState('')
+    const [question, setQuestion] = useState(questions[0]['body'])
 
-async function handleSubmit(evt) {
-  // Prevent form from being submitted to the server
-  evt.preventDefault();
-  try {
-    console.log('button working')
-    console.log(body)
-    let notebook = `${user.username}'s Notebook`
-    const noteData = {
-        author: user.name,
-        username: user.username,
-        notebook: notebook,
-        title: question,
-        body: body,
-        plainBody: plainBody,
-        public: privatePost ? false : true
+    async function handleSubmit(evt) {
+        // Prevent form from being submitted to the server
+        evt.preventDefault();
+        try {
+            console.log('button working')
+            console.log(body)
+            let notebook = `${user.username}'s Notebook`
+            const noteData = {
+                author: user.name,
+                username: user.username,
+                notebook: notebook,
+                title: question,
+                body: body,
+                plainBody: plainBody,
+                public: privatePost ? false : true
+            }
+            create(noteData)
+            console.log(noteData)
+            closeWindow()
+            const notes = await notesService.getUsersNotes(loggedInUser)
+            setNotes(notes)
+            console.log(notes)
+
+            setMode('Share')
+        } catch {
+            setError('Error getting data');
+        }
     }
-    create(noteData)
-    console.log(noteData)
-    closeWindow()
-    const notes = await getNotes()
-    setMode('Share')
-    setNotes(notes)
-  } catch {
-    setError('Error getting data');
-  }
-}
     const publicMode = () => {
         let privacyBtn = document.querySelector('.privacy-btn')
         let inputText = document.querySelector('.input-text')
@@ -125,7 +124,7 @@ async function handleSubmit(evt) {
                         <p >{user.username}</p>
                     </div>
                     <div className='canvas-title'>
-                        <QuestionSelector setQuestion={setQuestion}/>
+                        <QuestionSelector setQuestion={setQuestion} />
                     </div>
                     <div className='canvas-exit' onClick={closeWindow}>
                         <img className='x-btn' src={xIco}></img>
@@ -143,12 +142,12 @@ async function handleSubmit(evt) {
                         <input type='hidden' name='public' value={privatePost ? true : false}></input>
                     </form>
                     {/* <textarea placeholder="What's on your mind?"></textarea> */}
-                    <TextEditor {...{setBody, handleSubmit, setPlainBody}} />
+                    <TextEditor {...{ setBody, handleSubmit, setPlainBody }} />
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
                         {'Switch Privacy:'}
-                        <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
+                        <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test' /><span className='input-text'></span>
                         <button className='submit-btn' type='submit' onClick={handleSubmit}></button>
                     </div>
                 </div>
