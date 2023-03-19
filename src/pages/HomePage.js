@@ -16,22 +16,6 @@ const HomePage = ({ user }) => {
     const [notes, setNotes] = useState()
     const [display, setDisplay] = useState('')
 
-    // const getNotes = async () => {
-    //     try {
-    //         console.log('got em')
-    //         const data = await notesService.getAllNotes()
-    //         console.log(data)
-    //         setNotes(data)
-    //         console.log('got notes')
-    //         // ^ using Signup from users-service on formData collected here
-
-    //     } catch (error) {
-    //         // ^ if we have an error
-    //         console.log(error)
-    //         // this.setNotes({ error: "Can't get notes" })
-    //     }
-    // }
-
     const [verb, setVerb] = useState('be')
 
     useEffect(() => {

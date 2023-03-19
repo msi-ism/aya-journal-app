@@ -85,9 +85,6 @@ const JournalPage = ({ user }) => {
         return date.toDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
     }
 
-
-
-
     useEffect(() => {
         getNotes()
     }, [])
@@ -103,7 +100,7 @@ const JournalPage = ({ user }) => {
                 {notes ?
                     <ul className='journals-list'>
                         {notes.flatMap((note, idx) => (
-                            <li key={idx} className='journal-entry' >
+                            <li key={idx} className='journal-entry entry-cover' >
                                 <div className="entry-header" onClick={() => handleEditModal(note._id)}>
                                     <h2 className='entry-title'>{note.title}</h2>
                                 </div>
@@ -120,7 +117,7 @@ const JournalPage = ({ user }) => {
                                         <p>{convertDate(note.created_at)}</p>
                                     </div>
                                     <div id='edit-modal-box' className='options-container'>
-                                        <img className="edit-btn" onClick={() => handleEdit(note._id)} src={editIco}></img>
+                                        {/* <img className="edit-btn" onClick={() => handleEdit(note._id)} src={editIco}></img> */}
                                         <img className="del-btn" onClick={() => handleDelete(note._id)} src={trashIco}></img>
                                     </div>
                                 </div>

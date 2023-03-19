@@ -59,6 +59,7 @@ body {
 .header > .header-title {
   color: white;
   text-shadow: 0 0 3px #000000;
+  margin-top: 60px;
 }
 
 code {
@@ -226,7 +227,7 @@ button:disabled, form:invalid button[type="submit"] {
   align-items: center;
   justify-content: space-between;
   height: 9vmin;
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, .8);
   width: 100vw;
   padding: 25px;
   font-family: var(--font-nav);
