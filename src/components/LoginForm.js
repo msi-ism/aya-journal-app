@@ -21,7 +21,6 @@ function handleChange(evt) {
 }
 
 async function handleSubmit(evt) {
-  // Prevent form from being submitted to the server
   evt.preventDefault();
   try {
     console.log(credentials)

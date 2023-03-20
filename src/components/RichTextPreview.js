@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSubmit } from 'react'
 import './TextEditor.css'
-// import '../../node_modules/draft-js/dist/Draft.css'
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw, ContentState, convertFromRaw } from 'draft-js'
 import headingIco from './icons/heading.png'
 import numlistIco from './icons/numlist.png'
@@ -31,7 +30,6 @@ class RichTextPreview extends React.Component {
         this.setState({ editorState: EditorState.createWithContent(convertFromRaw(JSON.parse((this.props.note.body)))) })
 
     }
-
 
 
     _handleKeyCommand(command, editorState) {

@@ -26,17 +26,13 @@ const JournalEntry = ({ user, getNotes, setNotes }) => {
 
     const [error, setError] = useState('');
 
-    // function handleChange(evt) {
-    //   setNote({ ...note, [evt.target.name]: evt.target.value });
-    //   setError('');
-    // }
 
     const [body, setBody] = useState('')
     const [plainBody, setPlainBody] = useState('')
     const [question, setQuestion] = useState(questions[0]['body'])
 
     async function handleSubmit(evt) {
-        // Prevent form from being submitted to the server
+        // Prevent form submission from refreshing page
         evt.preventDefault();
         try {
             console.log('button working')

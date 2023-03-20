@@ -31,12 +31,6 @@ const JournalEditModal = ({user, getNotes, setNotes, highlight, savedPlainBody, 
     const [error, setError] = useState('');
     const [now, setNow] = useState()
 
-    
-
-// function handleChange(evt) {
-//   setNote({ ...note, [evt.target.name]: evt.target.value });
-//   setError('');
-// }
 
 const [body, setBody] = useState('')
 const [plainBody, setPlainBody] = useState('')

@@ -25,12 +25,6 @@ const JournalEntryDemo = ({user, getNotes}) => {
     const [error, setError] = useState('');
     const [focus, setFocus] = useState(0)
 
-function handleChange(evt) {
-  setError('');
-}
-
-// const [body, setBody] = useState('')
-// const [plainBody, setPlainBody] = useState('')
 const [question, setQuestion] = useState('')
 
     const publicMode = () => {
