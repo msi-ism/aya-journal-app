@@ -69,9 +69,9 @@ const [question, setQuestion] = useState('')
     }
 
     useEffect(() => {
-        let privacyBtn = document.querySelector('.privacy-btn')
-        let submitBtn = document.querySelector('.submit-btn')
-        publicMode()
+        // let privacyBtn = document.querySelector('.privacy-btn')
+        // let submitBtn = document.querySelector('.submit-btn')
+        // publicMode()
         let textBox = document.querySelector('.public-DraftStyleDefault-block')
         let textContainer = document.querySelector('.public-DraftEditorPlaceholder-root')
         let tickComplete = false
@@ -135,9 +135,8 @@ const [question, setQuestion] = useState('')
                 </div>
                 <div className='lower-canvas'>
                     <div className="submit-btns">
-                        {'Switch Privacy:'}
-                        <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span>
-                        <button className='submit-btn' type='submit' ></button>
+                        {/* <input type='checkbox' className='privacy-btn' onClick={switchPrivacy} value='test'/><span className='input-text'></span> */}
+                        <button className='submit-btn' type='submit' >Publish</button>
                     </div>
                 </div>
 

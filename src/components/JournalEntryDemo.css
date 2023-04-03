@@ -279,7 +279,12 @@ h2 {
   
   .lower-canvas > .submit-btn {
     background-color: var(--green-1);
-    width: 85px;
+    width: 100px;
+  }
+
+  .submit-btns > .submit-btn {
+    width: 100px;
+    font-size: 14px;
   }
   
   .body-canvas > textarea {
