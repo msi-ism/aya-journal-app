@@ -518,3 +518,80 @@ button:disabled, form:invalid button[type="submit"] {
 
 
 }
+
+@media only screen and (max-width: 900px) {
+  html, body, #app, #app>div {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* background: linear-gradient(-45deg, #FFFFFF, #824C88); */
+    padding: 0vmin;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+  
+  .main-container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .header {
+    margin-top: -35px;
+  }
+
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    background-color: rgba(0, 0, 0, .8);
+    width: 100%;
+    padding: 25px;
+    font-family: var(--font-nav);
+  }
+  
+  .navbar > a, .navname {
+    color: white;
+  }
+  
+  .navbar > .navmenu {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+  
+  .navmenu > .navname {
+    color: white;
+  }
+  
+  .navmenu > .profile-pic {
+    display: flex;
+    flex-direction: row;
+    max-height: 40px;
+    border-radius: 20px;
+  }
+  
+  .navbar > Link {
+    color: white;
+  }
+  
+  .logo {
+    width: auto;
+    height: 50px;
+  }
+  
+
+
+  
+}
